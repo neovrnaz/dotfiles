@@ -1,0 +1,6 @@
+[user]
+	name = neovrnaz
+	email = neovrnaz@gmail.com
+[color]
+  # Enable colors in color-supporting terminals
+  ui = auto
