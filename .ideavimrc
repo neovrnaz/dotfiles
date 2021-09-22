@@ -1,4 +1,5 @@
 imap jk <Esc>
+imap kj <Esc>
 set scrolloff=5
 
 set surround
@@ -20,6 +21,17 @@ nnoremap <space>] a<space><esc>h
 nnoremap [m :action MethodUp<cr>
 " Next method.
 nnoremap ]m :action MethodDown<cr>
+
+" Allows shift arrow to select lines
+nnoremap <S-Left> :action EditorLeftWithSelection<CR>
+nnoremap <S-Right> :action EditorRightWithSelection<CR>
+nnoremap <S-Up> :action EditorUpWithSelection<CR>
+nnoremap <S-Down> :action EditorDownWithSelection<CR>
+
+inoremap <S-Left> <C-O>:action EditorLeftWithSelection<CR>
+inoremap <S-Right> <C-O>:action EditorRightWithSelection<CR>
+inoremap <S-Up> <C-O>:action EditorUpWithSelection<CR>
+inoremap <S-Down> <C-O>:action EditorDownWithSelection<CR>
 
 let mapleader = " "
 map <leader>a :action $SelectAll<CR>
