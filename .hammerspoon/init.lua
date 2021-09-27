@@ -10,7 +10,7 @@ local vim = VimMode:new()
 -- For example, you don't want this plugin overriding your control of Terminal
 -- vim
 vim
-  :disableForApp('Terminal')
+ :disableForApp('Terminal')
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.
@@ -33,7 +33,7 @@ vim:setAlertFont("Courier New")
 -- To customize the hot key you want, see the mods and key parameters at:
 --   https://www.hammerspoon.org/docs/hs.hotkey.html#bind
 --
-vim:bindHotKeys({ enter = { {'ctrl'}, ';' } })
+vim:bindHotKeys({ enter = { {''}, 'f19' } })
 
 vim:enableBetaFeature('block_cursor_overlay')
 

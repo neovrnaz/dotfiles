@@ -1,3 +1,6 @@
+alias cdd='cd Documents '
+alias o='open'
+
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
@@ -6,9 +9,6 @@ alias gd='git diff'
 alias gco='git checkout '
 alias hist='git log --pretty=oneline'
 
-alias got='git '
-alias get='git '
-
-alias cdd='cd Documents '
-
-alias o='open'
+# Used for dotfiles repo
+# https://www.atlassian.com/git/tutorials/dotfiles 
+alias config='/usr/bin/git --git-dir=/Users/elijahgray/.cfg/ --work-tree=/Users/elijahgray'
