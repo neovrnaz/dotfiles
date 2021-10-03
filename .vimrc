@@ -1,14 +1,21 @@
-inoremap <F19>  <ESC>
-noremap <Up>    <Nop>
-noremap <Down>  <Nop>
-noremap <Left>  <Nop>
-noremap <Right> <Nop>
-
-let mapleader = ","
-nnoremap <Leader>r :source $MYVIMRC<CR>
 set number
-set relativenumber  
+set relativenumber
 
+syntax on
+
+" Unbind arrow keys
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+
+" Change leader to a comma
+let mapleader = ","
+
+" Shortcut for sourcing .vimrc
+nnoremap <Leader>r :source $MYVIMRC<CR>
+
+" Material Oceanic color scheme
 colorscheme hybrid_material
 set guifont=SourceCodePro-Regular:h14
 set background=dark
