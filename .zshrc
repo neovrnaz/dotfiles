@@ -9,10 +9,8 @@ export PATH="$(yarn global bin):$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 
-# pyenv
-# Set path to include bin
-# https://github.com/pyenv/pyenv/issues/106#issuecomment-190418988 
-export PATH="${HOME}/bin:${PATH}"
+# Python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # git on the command line
 autoload -Uz vcs_info
@@ -34,6 +32,8 @@ source /Users/elijahgray/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Vi Mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-#Auto Suggestions
+# Auto Suggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
+
+export TERM=xterm-256color
