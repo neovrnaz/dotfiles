@@ -11,6 +11,9 @@ local vim = VimMode:new()
 -- vim
 vim
  :disableForApp('Terminal')
+ :disableForApp('PyCharm')
+ :disableForApp('WebStorm')
+ :disableForApp('IntelliJ IDEA')
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.

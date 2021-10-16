@@ -1,70 +1,17 @@
-imap jk <Esc>
-imap kj <Esc>
 set scrolloff=5
 
 set surround
 set incsearch
 set relativenumber
-set number
 
 set multiple-cursors
+set clipboard-=ideput
 
-" Insert line above.
-nnoremap [<space> O<esc>0C<esc>j
-" Insert line below.
-nnoremap ]<space> o<esc>0C<esc>k
-" Insert space before in normal mode.
-nnoremap <space>[ i<space><esc>l
-" Insert space after in normal mode.
-nnoremap <space>] a<space><esc>h
-" Previous method.
-nnoremap [m :action MethodUp<cr>
-" Next method.
-nnoremap ]m :action MethodDown<cr>
+let mapleader = ","
+map <leader>r :action Run<cr>
 
-" Allows shift arrow to select lines
-nnoremap <S-Left> :action EditorLeftWithSelection<CR>
-nnoremap <S-Right> :action EditorRightWithSelection<CR>
-nnoremap <S-Up> :action EditorUpWithSelection<CR>
-nnoremap <S-Down> :action EditorDownWithSelection<CR>
-
-inoremap <S-Left> <C-O>:action EditorLeftWithSelection<CR>
-inoremap <S-Right> <C-O>:action EditorRightWithSelection<CR>
-inoremap <S-Up> <C-O>:action EditorUpWithSelection<CR>
-inoremap <S-Down> <C-O>:action EditorDownWithSelection<CR>
-
-let mapleader = " "
-map <leader>a :action $SelectAll<CR>
-map <leader>b :action GotoDeclaration<CR>
-map <leader>c :action $Copy<CR>
-map <leader>d :action Debug<CR>
-map <leader>e :action RecentFiles<CR>
-map <leader>f :action Find<CR>
-map <leader>g :action GotoLine<CR>
-map <leader>h :action TypeHierarchy<CR>
-map <leader>i :action ImplementMethods<CR>
-" TODO
-map <leader>m :action EditorScrollToCenter<CR>
-" TODO
-map <leader>n :action FileChooser.NewFolder<CR>
-map <leader>o :action OverrideMethods<CR>
-map <leader>p :action ParameterInfo<CR>
-" TODO
-map <leader>q :action QuickJavadoc<CR>
-map <leader>r :action $Redo<CR>
-map <leader>s :action SaveAll<CR>
-map <leader>t :action Vcs.UpdateProject<CR>
-map <leader>k :action Vcs.QuickListPopupAction<CR>
-map <leader>u :action GotoSuperMethod<CR>
-" TODO
-map <leader>v :action EditorCreateRectangularSelection<CR>
-map <leader>w :action EditorSelectWord<CR>
-map <leader>x :action $Cut<CR>
-map <leader>y :action EditorDeleteLine<CR>
-
-set clipboard-=ideaput
-
-map <leader>dd :action Debug<CR>
-map <leader>cd :action ChooseDebugConfiguration<CR>
-map <leader>rr :action Run<CR>
-map <leader>cr :action ChooseRunConfiguration<CR>
+" Unbind arrow keys
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>

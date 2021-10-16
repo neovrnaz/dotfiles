@@ -16,6 +16,12 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
+" Move visually selected lines up or down
+nnoremap <M-S-Up> :m .-2<CR>==
+nnoremap <M-S-Down> :m .+1<CR>==
+vnoremap <M-S-Up> :m '<-2<CR>gv=gv
+vnoremap <M-S-Down> :m '>+1<CR>gv=gv
+
 " Change leader to a comma
 let mapleader = ","
 

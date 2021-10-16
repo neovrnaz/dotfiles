@@ -11,6 +11,16 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 
 # Python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# Add binary directory for PyCharm
+# https://www.jetbrains.com/help/pycharm/pipenv.html?keymap=secondary_macos
+export PATH="$PATH:/Users/elijahgray/Library/Python/3.9/bin"
+
+# Functions
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
 
 # git on the command line
 autoload -Uz vcs_info
