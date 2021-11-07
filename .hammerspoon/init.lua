@@ -14,6 +14,14 @@ vim
  :disableForApp('PyCharm')
  :disableForApp('WebStorm')
  :disableForApp('IntelliJ IDEA')
+ :disableForApp('MacVim')
+ :disableForApp('Cascadea')
+ :disableForApp('Notes')
+ :disableForApp('System Preferences')
+ :disableForApp('Finder')
+ :disableForApp('Shortcuts')
+
+vim:useFallbackMode('Google Chrome')
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.
@@ -36,7 +44,7 @@ vim:setAlertFont("Courier New")
 -- To customize the hot key you want, see the mods and key parameters at:
 --   https://www.hammerspoon.org/docs/hs.hotkey.html#bind
 --
-vim:bindHotKeys({ enter = { {''}, 'f19' } })
+vim:bindHotKeys({ enter = { {''}, 'escape' } })
 
 vim:enableBetaFeature('block_cursor_overlay')
 
