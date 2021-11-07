@@ -1,9 +1,10 @@
-source $HOME/.aliases
 PS1='%1~ $ '
+set number
+source $HOME/.aliases
+export TERM=xterm-256color
 
-# yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$(yarn global bin):$PATH"
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_FUNCTIONS
 
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -42,8 +43,9 @@ source /Users/elijahgray/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Vi Mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-# Auto Suggestions
+# Autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
 
-export TERM=xterm-256color
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

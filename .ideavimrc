@@ -2,10 +2,8 @@ set scrolloff=5
 
 set surround
 set incsearch
-set relativenumber
 
 set multiple-cursors
-set clipboard-=ideput
 
 let mapleader = ","
 map <leader>r :action Run<cr>

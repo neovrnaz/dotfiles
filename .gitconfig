@@ -4,3 +4,5 @@
 [color]
   # Enable colors in color-supporting terminals
   ui = auto
+[init]
+	defaultBranch = main
