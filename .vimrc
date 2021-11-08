@@ -26,11 +26,12 @@ vnoremap <M-S-Down> :m '>+1<CR>gv=gv
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'mattn/emmet-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-commentary'
+    Plug 'mattn/emmet-vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 if has("gui_running")
