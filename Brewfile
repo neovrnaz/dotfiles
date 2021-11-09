@@ -29,6 +29,8 @@ cask "anki"
 cask "appcleaner"
 cask "font-source-code-pro"
 cask "hammerspoon"
+cask "obsidian"
+cask "vimr"
 cask "webstorm"
 mas "AdBlock Pro", id: 1018301773
 mas "AudioBookBinder", id: 413969927

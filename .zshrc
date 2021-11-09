@@ -2,6 +2,7 @@ PS1='%1~ $ '
 set number
 source $HOME/.aliases
 export TERM=xterm-256color
+export PATH="$HOME/bin:$PATH"
 
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
