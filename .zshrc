@@ -1,11 +1,16 @@
-PS1='%1~ $ '
 set number
-source $HOME/.aliases
 export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/.aliases
 
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
+
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -50,3 +55,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
