@@ -1,5 +1,4 @@
 set number
-export TERM=xterm-256color
 export PATH="$HOME/bin:$PATH"
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/.aliases
@@ -21,6 +20,8 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # Add binary directory for PyCharm
 # https://www.jetbrains.com/help/pycharm/pipenv.html?keymap=secondary_macos
 export PATH="$PATH:/Users/elijahgray/Library/Python/3.9/bin"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 # Functions
 mkcdir ()
@@ -43,19 +44,17 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
-# Syntax Highlighting
-source /Users/elijahgray/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Vi Mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# Syntax Highlighting
+source /Users/elijahgray/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

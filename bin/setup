@@ -23,9 +23,7 @@ brew bundle install
 
 gem install mdl
 
-sudo ln -s /Applications/MacVim.app/Contents/bin/mvim /usr/local/bin/mvim
-
-open https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent 
+open https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 open https://www.jetbrains.com/help/idea/create-ssh-configurations.html
 osascript -e "tell application \"Safari\"
     make new document
@@ -34,7 +32,6 @@ osascript -e "tell application \"Safari\"
 end tell"
 open https://kinesis-ergo.com/download/advantage2-smartset-app-for-mac/
 open https://www.kensington.com/software/kensingtonworks/
-open http://wordherd.com/keyboards/
 open https://nxmac.com/ia-writer/
 open https://nxmac.com/flxp/
 

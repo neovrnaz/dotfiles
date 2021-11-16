@@ -19,3 +19,7 @@ alias desk='cd ~/Desktop'
 # git for dotfiles
 # https://www.atlassian.com/git/tutorials/dotfiles 
 alias config='/usr/bin/git --git-dir=/Users/elijahgray/.cfg/ --work-tree=/Users/elijahgray'
+
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
+alias .vimrc='nvim ~/.config/nvim/init.vim'
