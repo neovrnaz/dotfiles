@@ -29,14 +29,22 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug '/usr/local/opt/fzf'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'turbio/bracey.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'hzchirs/vim-material'
 call plug#end()
 
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+" Oceanic
+let g:material_style='oceanic'
+set background=dark
+colorscheme vim-material
+let g:airline_theme='material'

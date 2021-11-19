@@ -1,4 +1,5 @@
 set number
+export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/.aliases
@@ -58,3 +59,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Append a command directly
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')

@@ -6,3 +6,5 @@
   ui = auto
 [init]
 	defaultBranch = main
+[core]
+	edtior = nvim

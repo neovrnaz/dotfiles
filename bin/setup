@@ -4,14 +4,49 @@ function echo_ok { echo -e '\033[1;32m'"$1"'\033[0m'; }
 function echo_warn { echo -e '\033[1;33m'"$1"'\033[0m'; }
 function echo_error  { echo -e '\033[1;31mERROR: '"$1"'\033[0m'; }
 
-echo_ok "Install starting. You may be asked for your password (for sudo)."
+echo "Please sign into iCloud and the App Store"
+read -p "Press [Enter] key after this..."
 
-xcode-select -p || exit "XCode must be installed! (use the app store)"
+echo "Creating an SSH key for you..."
+read -p "Please enter your GitHub Username" name 
+read -p "Please enter your GitHub email" email
+echo "Please enter your GitHub password"
+read -s password
+ssh-keygen -t rsa -C \""${email}"\"
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/
+clip < ~/.ssh/id_rsa.pub
+echo_warn "~/.ssh/id_rsa.pub has been copied to clipboard. Please add it to Github \n"
+echo "https//github.com/account/ssh"
+read -p "Press [Enter] key after this..."
 
+echo_ok "Beginning Installation..."
+
+echo "Installing xcode-stuff"
+xcode-select --install
+
+# Check for Homebrew,
+# Install if we don't have it
+if test ! $(which brew); then
+  echo "Installing homebrew..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+echo "Updating homebrew..."
+brew update
+
+echo "Installing Git..."
+brew install git
+
+echo "Installing brew mas"
 brew install mas
 
+echo "Git config"
+
+git config --global user.name \"${name}\" 
+git config --global user.email ${email}
+
+echo "Copying dotfiles from GitHub"
+cd ~
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 echo ".cfg" >> .gitignore
 git clone --bare https://github.com/neovrnaz/dotfiles.git $HOME/.cfg
@@ -19,22 +54,56 @@ config checkout
 config config --local status.showUntrackedFiles no
 rm README.md
 
+echo "Installing Brewfile"
 brew bundle install
+
+brew cleanup
 
 gem install mdl
 
-open https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-open https://www.jetbrains.com/help/idea/create-ssh-configurations.html
-osascript -e "tell application \"Safari\"
-    make new document
-    set URL of document 1 to \"topsites://\"
-    activate
-end tell"
-open https://kinesis-ergo.com/download/advantage2-smartset-app-for-mac/
-open https://www.kensington.com/software/kensingtonworks/
-open https://nxmac.com/ia-writer/
-open https://nxmac.com/flxp/
+echo "Setting wallpaper"
+wallpaper set $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Downloads/Wallpaper.jpg
 
-echo_ok "Success!"
+echo "Adding keyboard layout"
+cp /Users/$HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Downloads/My\ Layout.keylayout ~/Library/Keyboard\ Layouts
+
+echo "Setting some Mac settings..."
+
+echo "Changing doc icons"
+dockutil --add /Applications/Anki --after 'Launchpad'
+dockutil --remove 'Messages'
+dockutil --remove 'Mail'
+dockutil --remove 'Maps'
+dockutil --remove 'Photos'
+dockutil --remove 'Facetime'
+dockutil --remove 'Calendar'
+dockutil --remove 'Contacts'
+dockutil --remove 'Reminders'
+dockutil --remove 'Notes'
+dockutil --remove 'TV'
+dockutil --remove 'Music'
+dockutil --remove 'Podcasts'
+dockutil --remove 'News'
+
+defaults write com.apple.dock autohide-time-modifier -int 1 && killall Dock
+
+sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+
+
+echo_ok "Done!"
 echo "Further Instructions:"
 echo "  - Run :Plugin install in Vim"
+manual_downloads=(
+https://kinesis-ergo.com/download/advantage2-smartset-app-for-mac/
+https://www.kensington.com/software/kensingtonworks/
+https://nxmac.com/ia-writer/
+)
+                                                                         
+for i in ${manual_downloads[@]}
+do                             
+    open $i
+done       
+
+read -p "[Enter] to open manual downloads"
