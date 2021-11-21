@@ -1,0 +1,13 @@
+.DS_Store
+.iml
+.idea
+Music
+Movies
+Library/Caches
+zsh-syntax-highlighting
+Library/Containers/com.apple.Safari/Data/Library/Caches
+Library/Containers/com.apple.helpviewer/Data/Library/Caches
+Library/Containers/com.apple.iBooksX/Data/Library/Caches
+Library/Containers/com.apple.AppStore/Data/Library/Caches
+Library/Metadata/CoreSpotlight
+Library/Safari/Favicon\ Cache
