@@ -28,7 +28,7 @@ xcode-select --install
 # Install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  nuby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 echo "Updating homebrew..."
@@ -57,9 +57,22 @@ rm README.md
 echo "Installing Brewfile"
 brew bundle install
 
+source .zshrc
+
+echo "Installig Ruby gems"
+ruby_gems=(
+bundler
+mdl
+
+)
+gem install ${ruby_gems[@]}
+
 brew cleanup
 
-gem install mdl
+echo "Setting up theme for Terminal and NeoVim"
+mkdir -p ~/.config
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+base16_material
 
 echo "Setting wallpaper"
 wallpaper set $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Downloads/Wallpaper.jpg
@@ -90,11 +103,10 @@ defaults write com.apple.dock autohide-time-modifier -int 1 && killall Dock
 sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-
-
 echo_ok "Done!"
 echo "Further Instructions:"
 echo "  - Run :Plugin install in Vim"
+
 manual_downloads=(
 https://kinesis-ergo.com/download/advantage2-smartset-app-for-mac/
 https://www.kensington.com/software/kensingtonworks/

@@ -6,5 +6,19 @@
   ui = auto
 [init]
 	defaultBranch = main
+[delta]
+    syntax-theme = material
+    features = decorations
 [core]
 	edtior = nvim
+    pager = --theme='Material'
+[pager]
+    diff = delta
+    show = delta
+    log = delta
+    blame = delta
+    reflog = delta
+[interactive]
+    diffFilter = delta --color-only
+[alias]
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
