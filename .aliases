@@ -1,4 +1,5 @@
 alias e=$EDITOR
+alias b='open "Homebrew.terminal"'
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 alias zshrc='$EDITOR ~/.zshrc'
@@ -24,9 +25,10 @@ alias ~='cd ~'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias iCloud='cd $HOME/Library/Mobile\ Documents'
-alias 1="cd $(mdfind 'kMDItemUserTags=current-project' -onlyin ~/Developer)"
 
 ### git ###
+# inspired by ohmyzsh/git.plugin.zsh 
+
 alias g='git'
 
 alias ga='git add'
@@ -38,6 +40,7 @@ alias gc!='git commit -v --amend'
 alias gc='git commit -v'
 
 alias gcl='git clone --recurse-submodules'
+alias gcmsg='git commit -m'
 alias gco='git checkout'
 
 batdiff()
@@ -78,10 +81,9 @@ alias cb='config branch'
 
 alias cc!='config commit -v --amend'
 alias cc='config commit -v'
-alias cco='config checkout'
 
-alias cd='config diff'
-alias cdca='config diff --cached'
+alias ccmsg='config commit -m'
+alias cco='config checkout'
 
 alias cl='config pull'
 alias clg='config log --stat'

@@ -12,6 +12,7 @@
 [core]
 	edtior = nvim
     pager = --theme='Material'
+	excludesfile = /Users/elijahgray/.gitignore_global
 [pager]
     diff = delta
     show = delta

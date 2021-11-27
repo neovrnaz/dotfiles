@@ -5,11 +5,14 @@ set shiftwidth=4
 set smartindent
 set autoindent
 set expandtab
+set mouse=n
 
 let mapleader = " "
 
 nmap <C-p> :Files<CR>
 nmap <C-e> :Buffers<CR>
+
+nmap <F6> :NERDTreeToggle<CR>
 
 nnoremap zz :update<cr>
 

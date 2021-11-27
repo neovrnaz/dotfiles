@@ -2,9 +2,6 @@ set number
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
 source $HOME/.aliases
-# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# man 2 select
-export MANPAER="nvim +Man!"
 
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="fd --type f"
@@ -30,6 +27,11 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 ### Functions ###
+
+function man {
+    open x-man-page://$@ ;
+}
+
 mkcdir ()
 {
     mkdir -p -- "$1" &&
@@ -59,6 +61,9 @@ source /Users/elijahgray/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
