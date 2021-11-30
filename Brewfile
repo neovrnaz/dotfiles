@@ -38,9 +38,7 @@ brew "zsh-syntax-highlighting"
 brew "zsh-vi-mode"
 brew "romkatv/powerlevel10k/powerlevel10k"
 cask "anki"
-cask "appcleaner"
 cask "hammerspoon"
-cask "obsidian"
 cask "webstorm"
 mas "AdBlock Pro", id: 1018301773
 mas "AudioBookBinder", id: 413969927

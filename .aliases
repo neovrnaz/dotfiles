@@ -18,16 +18,11 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-### Navigation ###
 alias dev='cd ~/Developer'
 alias desk='cd ~/Desktop'
 alias ~='cd ~'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias iCloud='cd $HOME/Library/Mobile\ Documents'
-
-### git ###
-# inspired by ohmyzsh/git.plugin.zsh 
 
 alias g='git'
 
@@ -107,8 +102,6 @@ alias csb='config status -sb'
 alias css='config status --short'
 alias cst='config status'
 
-
-# Misc
 alias mkfolder='mkdir ~/Desktop/Folder && echo "This is a File" > ~/Desktop/Folder/File{1..3}.txt'
  
 alias whic='which'
