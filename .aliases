@@ -1,5 +1,6 @@
 alias e=$EDITOR
-alias b='open "Homebrew.terminal"'
+alias v=$EDITOR
+
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 alias zshrc='$EDITOR ~/.zshrc'

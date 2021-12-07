@@ -44,6 +44,7 @@ nnoremap <Leader>r :source $MYVIMRC<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'ArjenL/vim-kinesis'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -65,7 +66,7 @@ call plug#end()
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-"""" Colors
+"""" Theme
 syntax on
 syntax enable
 " Oceanic Theme
@@ -76,3 +77,5 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 highlight Comment cterm=italic
+
+autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
