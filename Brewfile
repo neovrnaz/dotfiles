@@ -1,4 +1,3 @@
-tap "adoptopenjdk/openjdk"
 tap "buo/cask-upgrade"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -38,11 +37,8 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "zsh-vi-mode"
 brew "romkatv/powerlevel10k/powerlevel10k"
-cask "adoptopenjdk11"
 cask "anki"
 cask "font-source-code-pro"
-cask "gpg-suite"
-cask "hammerspoon"
 cask "jetbrains-toolbox"
 mas "AdBlock Pro", id: 1018301773
 mas "AudioBookBinder", id: 413969927
