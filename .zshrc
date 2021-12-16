@@ -56,13 +56,6 @@ bcp() {
     fi
 }
 
-# git on the command line
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats 'On branch %b '
-# command prompt directory
-setopt PROMPT_SUBST
-
 # Tab completions
 autoload -U compinit
 zstyle ':completion:*' menu select
