@@ -9,21 +9,19 @@ set mouse=n
 
 let mapleader = " "
 
-nmap <C-p> :Files<CR>
-nmap <C-e> :Buffers<CR>
+" fzf
+nnoremap <leader><leader> :GFiles<CR>
+nnoremap <leader>fi       :Files<CR>
+nnoremap <leader>C        :Colors<CR>
+nnoremap <leader><CR>     :Buffers<CR>
+nnoremap <leader>fl       :Lines<CR>
+nnoremap <leader>rg       :Rg <C-R><C-W><CR>
+nnoremap <leader>m        :History<CR>
 
 nmap <F6> :NERDTreeToggle<CR>
 
 nnoremap zz :update<cr>
 
-" jump to the previous function
-nnoremap <silent> [f :call
-\ search('\(\(if\\|for\\|while\\|switch\\|catch\)\_s*\)\@64<!(\_[^)]*)\_[^;{}()]*\zs{', "bw")<CR>
-" jump to the next function
-nnoremap <silent> ]f :call
-\ search('\(\(if\\|for\\|while\\|switch\\|catch\)\_s*\)\@64<!(\_[^)]*)\_[^;{}()]*\zs{', "w")<CR>
-
-" Unbind arrow keys
 noremap <up>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
@@ -33,24 +31,20 @@ noremap <Right> <NOP>
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <CR> :noh<CR>
 
-" Move visually selected lines up or down
-nnoremap <M-S-Up> :m .-2<CR>==
-nnoremap <M-S-Down> :m .+1<CR>==
-vnoremap <M-S-Up> :m '<-2<CR>gv=gv
-vnoremap <M-S-Down> :m '>+1<CR>gv=gv
-
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
 let g:fzf_action = { 'ctrl-e': 'edit' }
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'ArjenL/vim-kinesis'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
 Plug 'jiangmiao/auto-pairs'
+Plug 'ArjenL/vim-kinesis'
 Plug 'ap/vim-css-color'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
@@ -63,10 +57,9 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+"""" Theme
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
-"""" Theme
 syntax on
 syntax enable
 " Oceanic Theme
