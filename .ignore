@@ -1,6 +1,15 @@
+Movies
 Music
 .git
 .idea
 node_modules
 build
 tmp
+.zsh_sessions
+Backups/JetBrains/*
+.npm/_cacache/*
+.fzf-tab/modules/*
+*/cache/*
+*/Cache/*
+Library
+JetBrains

@@ -4,14 +4,18 @@
 [color]
   # Enable colors in color-supporting terminals
   ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [init]
 	defaultBranch = main
 [delta]
-    syntax-theme = material
     features = decorations
+    navigate = true
 [core]
 	edtior = nvim
-    pager = --theme='Material'
+    pager = "delta --theme='Material'"
 	excludesfile = /Users/elijahgray/.gitignore_global
 [pager]
     diff = delta
@@ -23,3 +27,10 @@
     diffFilter = delta --color-only
 [alias]
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+[merge]
+    conflictstyle = diff3
+	tool = bc
+[diff]
+    colorMoved = default
+[mergetool "bc"]
+	trustExitCode = true

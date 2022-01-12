@@ -17,8 +17,7 @@ nnoremap <leader><CR>     :Buffers<CR>
 nnoremap <leader>fl       :Lines<CR>
 nnoremap <leader>rg       :Rg <C-R><C-W><CR>
 nnoremap <leader>m        :History<CR>
-
-nmap <F6> :NERDTreeToggle<CR>
+nnoremap <F9> :!%:p<Enter>
 
 nnoremap zz :update<cr>
 
@@ -33,7 +32,12 @@ nnoremap <silent> <CR> :noh<CR>
 
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
+" Makes delete word (ctrl-w) play nice with keyboard layout
+inoremap <M-BS> <C-w>
+
 let g:fzf_action = { 'ctrl-e': 'edit' }
+
+let g:netrw_banner=0
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-eunuch'
@@ -46,14 +50,12 @@ Plug 'pangloss/vim-javascript'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ArjenL/vim-kinesis'
 Plug 'ap/vim-css-color'
-Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'turbio/bracey.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
