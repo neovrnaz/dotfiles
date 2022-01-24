@@ -85,10 +85,6 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
 --preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
 "
-
-# # Fixes zsh-vi-mode and fzf keybinding conflicts
-# zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
@@ -100,7 +96,7 @@ export LS_COLORS="$(vivid -m 8-bit generate material)"
 export BAT_THEME="base16"
  
 # you-should-use
-export YSU_IGNORED_ALIASES=("e" "v" "whic" "g")
+export YSU_IGNORED_ALIASES=("e" "v" "g")
 
 
 ### Oh My Zsh ###
@@ -211,3 +207,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Fixes zsh-vi-mode and fzf keybinding conflicts
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+

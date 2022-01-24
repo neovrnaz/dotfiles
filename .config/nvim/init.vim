@@ -26,17 +26,17 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
-"This unsets the "last search pattern" register by hitting escape
+" This unsets the "last search pattern" register by hitting escape
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <CR> :noh<CR>
 
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
-" Makes delete word (ctrl-w) play nice with keyboard layout
-inoremap <M-BS> <C-w>
 
-let g:fzf_action = { 'ctrl-e': 'edit' }
+" Shows most recent files
+nmap <silent> <leader>m :History<CR>
 
+" Hides the netrw banner
 let g:netrw_banner=0
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -74,3 +74,5 @@ endif
 highlight Comment cterm=italic
 
 autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
+
+let g:AutoPairsShortcutToggle = ''
