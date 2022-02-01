@@ -8,6 +8,10 @@ setopt HIST_NO_FUNCTIONS
 # Enable italics
 export TERM="xterm-256color"
 
+# Ruby
+# hint: make sure the path matches `ruby --version`
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
+
 ### Functions ###
 
 # Open man pages in Man Page Profile
@@ -208,3 +212,4 @@ source $ZSH/oh-my-zsh.sh
 # Fixes zsh-vi-mode and fzf keybinding conflicts
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"

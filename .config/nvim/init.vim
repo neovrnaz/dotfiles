@@ -32,12 +32,13 @@ nnoremap <silent> <CR> :noh<CR>
 
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
-
 " Shows most recent files
-nmap <silent> <leader>m :History<CR>
+nmap <silent> <leader>m :MRU<CR>
 
 " Hides the netrw banner
-let g:netrw_banner=0
+" let g:netrw_banner=0
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-eunuch'
@@ -45,6 +46,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+Plug 'yegappan/mru'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'jiangmiao/auto-pairs'
