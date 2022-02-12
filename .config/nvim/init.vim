@@ -63,7 +63,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
-"""" Theme
+"""" Appearance
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 syntax on
@@ -77,6 +77,7 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 highlight Comment cterm=italic
 
-autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
+" Uncomment for Advantage Keyboard syntax highlighting
+" autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
 
 let g:AutoPairsShortcutToggle = ''

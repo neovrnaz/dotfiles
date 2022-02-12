@@ -284,6 +284,15 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
+
+###############################################################################
+# Custom                                                                      #
+###############################################################################
+
+# Enable text replacements for all applications
+defaults write -g WebAutomaticTextReplacementEnabled -bool true
+
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################

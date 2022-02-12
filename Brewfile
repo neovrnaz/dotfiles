@@ -8,7 +8,6 @@ tap "homebrew/core"
 tap "romkatv/powerlevel10k"
 brew "bash"
 brew "bat"
-brew "readline"
 brew "xz"
 brew "python@3.9"
 brew "coreutils"
@@ -41,11 +40,16 @@ brew "wallpaper"
 brew "zlib"
 cask "anki"
 cask "font-ia-writer-mono"
+cask "font-im-writing-nerd-font"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-roboto-mono-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
 cask "font-source-code-pro"
-cask "github"
 cask "jetbrains-toolbox"
 mas "AdBlock Pro", id: 1018301773
 mas "AudioBookBinder", id: 413969927
+mas "Caffeinated", id: 1362171212
 mas "Cascadea", id: 1432182561
 mas "ColorSlurp", id: 1287239339
 mas "Find Any File", id: 402569179

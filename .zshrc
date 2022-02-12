@@ -1,4 +1,12 @@
-# Custom
+### Custom ###
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
 
@@ -8,9 +16,53 @@ setopt HIST_NO_FUNCTIONS
 # Enable italics
 export TERM="xterm-256color"
 
+export GSD_SITES="ebay.com facebook.com amazon.com"
+
 # Ruby
 # hint: make sure the path matches `ruby --version`
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
+
+# Tab completions
+autoload -U compinit
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with lsd when completingcd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -F --tree --depth 2 --color=always --icon=always {2} | head -200'
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# Autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --hidden' 
+export FZF_DEFAULT_OPTS='--color'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
+--preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
+"
+
+BASE16_SHELL="$HOME/.config/base16-shell/"
+
+# Appearance
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+    eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
+
+export BAT_THEME="base16"
+ 
+# you-should-use
+export YSU_IGNORED_ALIASES=("e" "v" "g")
 
 ### Functions ###
 
@@ -25,6 +77,7 @@ function lt3 {
     find "$@" | lt --depth 3
 }
 
+# Homebrew
 # Delete (one or multiple) selected application(s)
 # mnemonic [B]rew [C]lean [P]ackages (e.g. uninstall)
 bcp() {
@@ -53,64 +106,12 @@ uninstall() {
     fi
 }
 
-# Plugins
-
-# Tab completions
-autoload -U compinit
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with lsd when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -F --tree --depth 2 --color=always --icon=always {2} | head -200'
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-
-# Autosuggestions
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
-export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
-export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Enable Powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# fzf
-export FZF_DEFAULT_COMMAND='fd --hidden' 
-export FZF_DEFAULT_OPTS='--color'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
-export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
---preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
-"
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-export LS_COLORS="$(vivid -m 8-bit generate material)"
-
-export BAT_THEME="base16"
- 
-# you-should-use
-export YSU_IGNORED_ALIASES=("e" "v" "g")
+install() {
+    echo Must learn to use tmux first! 
+}
 
 
 ### Oh My Zsh ###
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -208,8 +209,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 
-
-# Fixes zsh-vi-mode and fzf keybinding conflicts
-zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
+
+ 
