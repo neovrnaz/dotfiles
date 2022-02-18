@@ -7,6 +7,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Used for other settings you might not want to commit
+[ -f ~/.extra ] && source .extra
+
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
 
