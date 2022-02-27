@@ -26,7 +26,7 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
-" This unsets the "last search pattern" register by hitting escape
+                                                            escape
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <CR> :noh<CR>
 
@@ -41,26 +41,27 @@ nmap <silent> <leader>m :MRU<CR>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-Plug 'yegappan/mru'
-Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ArjenL/vim-kinesis'
-Plug 'ap/vim-css-color'
-Plug 'ryanoasis/vim-devicons'
-Plug 'turbio/bracey.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf'
+Plug 'tpope/vim-eunuch'
+Plug 'ryanoasis/vim-devicons'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'ap/vim-css-color'
+Plug 'chriskempson/base16-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mattn/emmet-vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
+Plug 'yegappan/mru'
+Plug 'ArjenL/vim-kinesis'
+Plug 'jiangmiao/auto-pairs'
+Plug 'pangloss/vim-javascript'
+Plug 'godlygeek/tabular'
+Plug 'turbio/bracey.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/vim-markdown'
 call plug#end()
 
 """" Appearance
