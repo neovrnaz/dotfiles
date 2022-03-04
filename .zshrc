@@ -19,13 +19,15 @@ setopt HIST_NO_FUNCTIONS
 # Enable italics
 export TERM="xterm-256color"
 
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 export GSD_SITES="ebay.com facebook.com amazon.com"
 
 # Ruby
 # hint: make sure the path matches `ruby --version`
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
 
-# Tab completions
+# Completions
 autoload -U compinit
 zmodload zsh/complist
 compinit
@@ -72,12 +74,6 @@ export YSU_IGNORED_ALIASES=("e" "v" "g")
 # Open man pages in Man Page Profile
 function man {
     open x-man-page://$@;
-}
-function lt2 {
-    find "$@" | lt --depth 2
-}
-function lt3 {
-    find "$@" | lt --depth 3
 }
 
 # Homebrew
@@ -140,6 +136,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
+
+# # Uncomment the following line to disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13

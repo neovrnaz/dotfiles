@@ -16,7 +16,7 @@ nnoremap <leader>C        :Colors<CR>
 nnoremap <leader><CR>     :Buffers<CR>
 nnoremap <leader>fl       :Lines<CR>
 nnoremap <leader>rg       :Rg <C-R><C-W><CR>
-nnoremap <leader>m        :History<CR>
+nnoremap <leader>m        :FZFMru<CR>
 nnoremap <F9> :!%:p<Enter>
 
 nnoremap zz :update<cr>
@@ -26,14 +26,13 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
-                                                            escape
+ " This unsets the "last search pattern" register by hitting escape
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <CR> :noh<CR>
 
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
 " Shows most recent files
-nmap <silent> <leader>m :MRU<CR>
 
 " Hides the netrw banner
 " let g:netrw_banner=0
@@ -41,11 +40,12 @@ nmap <silent> <leader>m :MRU<CR>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf'
 Plug 'tpope/vim-eunuch'
 Plug 'ryanoasis/vim-devicons'
-Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
@@ -64,6 +64,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
+source $HOME/.config/nvim/coc.vim
+
+let g:AutoPairsShortcutToggle = ''
+
 """" Appearance
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -81,4 +85,3 @@ highlight Comment cterm=italic
 " Uncomment for Advantage Keyboard syntax highlighting
 " autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
 
-let g:AutoPairsShortcutToggle = ''
