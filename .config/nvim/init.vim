@@ -44,6 +44,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf'
 Plug 'tpope/vim-eunuch'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'

@@ -1,15 +1,1 @@
-set scrolloff=5
-
-set surround
-set incsearch
-
-set multiple-cursors
-
-let mapleader = ","
-map <leader>r :action Run<cr>
-
-" Unbind arrow keys
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
+source $HOME/.config/nvim/init.vim

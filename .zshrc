@@ -1,14 +1,16 @@
+if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
+
 ### Custom ###
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Used for other settings you might not want to commit
-[ -f ~/.extra ] && source .extra
+[ -f ~/.extra ] && source ~/.extra
 
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
@@ -65,7 +67,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
 
 export BAT_THEME="base16"
- 
+
 # you-should-use
 export YSU_IGNORED_ALIASES=("e" "v" "g")
 
@@ -232,4 +234,4 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
 
- 
+fi
