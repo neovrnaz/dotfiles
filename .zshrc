@@ -23,7 +23,7 @@ export TERM="xterm-256color"
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-export GSD_SITES="ebay.com facebook.com amazon.com"
+export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
 
 # Ruby
 # hint: make sure the path matches `ruby --version`
@@ -32,7 +32,7 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
 # Completions
 autoload -U compinit
 zmodload zsh/complist
-compinit
+compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

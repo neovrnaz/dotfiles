@@ -15,7 +15,7 @@
 [core]
   edtior = nvim
   pager = delta
-  excludesfile = $HOME/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [pager]
   diff = delta
   show = delta

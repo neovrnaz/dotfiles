@@ -2,9 +2,6 @@
 
 echo "Creating an SSH key for you..."
 
-read -p "Enter github email : " email
-echo "Using email ${email}"
-
 mkdir -p ~/.ssh
 
 # Configure ssh-agent to always use Keychain

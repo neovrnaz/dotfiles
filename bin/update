@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+brew update
+brew upgrade
+brew cu -ay
+brew cleanup
+
+tldr --update
+
+omz update
+
+nvim +PlugUpdate +qall
+
+# Keep as last
+softwareupdate -i -a

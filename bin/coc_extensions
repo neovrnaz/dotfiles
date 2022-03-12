@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -o nounset    # error when referencing undefined variable
+set -o errexit    # exit when command fails
+
+# Install latest nodejs
+if [ ! -x "$(command -v node)" ]; then
+    brew install node
+    export PATH="/usr/local/bin/:$PATH"
+fi
+
+# Install extensions
+mkdir -p ~/.config/coc/extensions
+cd ~/.config/coc/extensions
+if [ ! -f package.json ]
+then
+  echo '{"dependencies":{}}'> package.json
+fi
+# Change extension names to the extensions you need
+extensions=(coc-snippets coc-tsserver coc-json coc-html coc-css)
+npm install ${extensions[@]} --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
