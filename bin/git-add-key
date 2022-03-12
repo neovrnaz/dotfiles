@@ -5,7 +5,7 @@ echo "Creating an SSH key for you..."
 read -p "Enter github email : " email
 echo "Using email ${email}"
 
-[ ! -d ~/.ssh ] && echo "~/.ssh does not exist. Creating it..." ; mkdir ~/.ssh
+mkdir -p ~/.ssh
 
 # Configure ssh-agent to always use Keychain
 echo "Creating ~/.ssh/config"

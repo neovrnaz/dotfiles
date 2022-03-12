@@ -2,15 +2,15 @@ if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 
 ### Custom ###
 
+# Used for other settings you might not want to commit
+[ -f ~/.extra ] && source ~/.extra
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Used for other settings you might not want to commit
-[ -f ~/.extra ] && source ~/.extra
 
 export EDITOR=nvim
 export PATH="$HOME/bin:$PATH"
@@ -46,6 +46,8 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# ignore suggestions for 50 characters or over
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --hidden' 
@@ -187,7 +189,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf fzf-tab you-should-use $plugins zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
+plugins=(git fzf fzf-tab you-should-use $plugins zsh-autosuggestions zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -232,6 +234,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
 
 fi

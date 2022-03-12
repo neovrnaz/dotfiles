@@ -1,4 +1,9 @@
 .DS_Store
 .iml
 .idea
-~/.extra
+.extra
+
+.config/coc
+.config/gh
+.config/base16-shell
+.config/coc

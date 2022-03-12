@@ -1,0 +1,585 @@
+# duti settings file
+# src: https://gist.github.com/apfelchips/0073cb3e8d186115f590d318998c1025
+
+## duti documentation https://web.archive.org/web/20180901095433/http://duti.org/documentation.html
+
+# List of MIME Types:
+# IANA: https://www.iana.org/assignments/media-types/media-types.xhtml
+# MDN: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
+# Unofficial: https://www.sitepoint.com/mime-types-complete-list/
+#
+# Uniform Type Identifier: https://en.wikipedia.org/wiki/Uniform_Type_Identifier#UTI_structure
+# Apple provides many UTIs with Mac OS X, but developers are free to define their own, as long as the UTI is unique to that document type
+
+#
+# file association .plist: ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist
+#
+
+# Show UTI of an extension: `duti -e <.ext>` or `mdls -name kMDItemContentType -name kMDItemContentTypeTree -name kMDItemKind <file> `
+
+# available Roles:
+# all:    app handles all roles for the given UTI.
+# viewer: app handles reading and displaying documents
+# editor: app can manipulate and save the item. (implies viewer)
+# shell:  app can execute the item.
+# none    app cannot open the item, but provides an icon for the given UTI.
+
+# Application Bundle Identifier aka. bundle_id aka. app_id
+# get the bundle_id use of an Application: osascript -e 'id of app "Finder.app"'
+
+### Settings Format
+## bundle_id     UTI/ext/url_scheme    role
+## io.mpv        mkv                        viewer
+## io.mpv        public.movie               viewer
+
+# Binary
+
+com.jetbrains.datagrip db editor
+com.jetbrains.datagrip sqlite editor
+## iTunes Library
+com.jetbrains.datagrip itdb editor
+
+# Fancytext
+com.apple.automator.neovim rtf    editor
+com.apple.automator.neovim public.rtf    editor
+
+# Unknown filetypes
+com.apple.automator.neovim public.data    editor
+# executables
+com.apple.automator.neovim public.unix-executable    editor
+
+# Plaintex
+com.apple.automator.neovim txt    editor
+com.apple.automator.neovim public.plain-text    editor
+
+com.apple.automator.neovim text    editor
+com.apple.automator.neovim dic    editor
+com.apple.automator.neovim dict    editor
+com.apple.automator.neovim nfo    editor
+com.apple.automator.neovim diz    editor
+com.apple.automator.neovim inf    editor
+com.apple.automator.neovim info    editor
+com.apple.automator.neovim label    editor
+com.apple.automator.neovim properties    editor
+
+com.apple.automator.neovim tmp    editor
+com.apple.automator.neovim temp    editor
+com.apple.automator.neovim tpl    editor
+com.apple.automator.neovim tmpl    editor
+com.apple.automator.neovim template    editor
+com.apple.automator.neovim manifest    editor
+
+## LOGGING
+com.apple.automator.neovim log    editor
+com.apple.automator.neovim err    editor
+com.apple.automator.neovim crash    editor
+
+# Samba log file
+com.apple.automator.neovim nmbd    editor
+
+com.apple.automator.neovim panic    editor
+com.apple.automator.neovim report    editor
+
+## Config files
+com.apple.automator.neovim cfg    editor
+com.apple.automator.neovim cnf    editor
+com.apple.automator.neovim conf    editor
+com.apple.automator.neovim config    editor
+com.apple.automator.neovim configure    editor
+com.apple.automator.neovim prop    editor
+com.apple.automator.neovim setting    editor
+com.apple.automator.neovim settings    editor
+com.apple.automator.neovim bak    editor
+com.apple.automator.neovim rule    editor
+com.apple.automator.neovim rules    editor
+
+com.apple.automator.neovim vmwarevm    editor
+
+# SystemD
+com.apple.automator.neovim service    editor
+
+com.apple.automator.neovim editorconfig    editor
+com.apple.automator.neovim lock    editor
+com.apple.automator.neovim duti    editor
+com.vladbadea.plisteditor plist    all
+
+## GIT
+com.apple.automator.neovim git    editor
+com.apple.automator.neovim gitignore    editor
+com.apple.automator.neovim gitmodules    editor
+com.apple.automator.neovim gitconfig    editor
+com.apple.automator.neovim git_message    editor
+com.apple.automator.neovim gitattributes    editor
+
+com.apple.automator.neovim patch    editor
+
+## VIM
+com.apple.automator.neovim vim    editor
+com.apple.automator.neovim neovim    editor
+com.apple.automator.neovim vimrc    editor
+com.apple.automator.neovim viminfo    editor
+
+### Apache
+com.apple.automator.neovim apacheconf    editor
+com.apple.automator.neovim vhost    editor
+
+# Certs, GNUPG, PGP, GPG, Keys and Secrets
+com.apple.automator.neovim pem    editor
+com.apple.automator.neovim pub    editor
+com.apple.automator.neovim key    editor
+com.apple.automator.neovim rsa    editor
+com.apple.automator.neovim dsa    editor
+com.apple.automator.neovim ca    editor
+com.apple.automator.neovim crt    editor
+com.apple.automator.neovim csr    editor
+com.apple.automator.neovim cert    editor
+com.apple.automator.neovim x509    editor
+com.apple.automator.neovim rev    editor
+com.apple.automator.neovim gpg    editor
+com.apple.automator.neovim pgp    editor
+com.apple.automator.neovim sig    editor
+
+# SUBTITLES
+com.apple.automator.neovim srt    editor
+com.apple.automator.neovim vtt    editor
+com.apple.automator.neovim sub    editor
+com.apple.automator.neovim io.mpv.sub     editor
+com.apple.automator.neovim idx    editor
+com.apple.automator.neovim io.mpv.vobsub   editor
+com.apple.automator.neovim ass    editor
+com.apple.automator.neovim vss    editor
+
+# LICENSES / readme
+# eg.: read.me
+com.apple.automator.neovim me    editor
+com.apple.automator.neovim readme    editor
+
+com.apple.automator.neovim lic    editor
+com.apple.automator.neovim license    editor
+com.apple.automator.neovim gpl    editor
+com.apple.automator.neovim gpl2    editor
+com.apple.automator.neovim gpl3    editor
+com.apple.automator.neovim mit    editor
+com.apple.automator.neovim apache    editor
+com.apple.automator.neovim mozilla    editor
+
+# Markup / Configuration Files
+# XML
+com.apple.automator.neovim xml    editor
+#com.apple.automator.neovim application/xml editor
+#com.apple.automator.neovim text/xml    editor
+#com.apple.automator.neovim application/atom+xml    editor
+#com.apple.automator.neovim application/xhtml+xml    editor
+com.apple.automator.neovim ovf    editor
+com.apple.automator.neovim mobileconfig    editor
+com.apple.automator.neovim reg    editor
+com.apple.automator.neovim strings    editor
+
+# Calibre metadata
+com.apple.automator.neovim opf    editor
+
+com.apple.automator.neovim xul    editor
+#com.apple.automator.neovim application/vnd.mozilla.xul+xml    editor
+
+com.apple.automator.neovim yml    editor
+com.apple.automator.neovim yaml    editor
+com.apple.automator.neovim ini    editor
+com.apple.automator.neovim json    editor
+com.apple.automator.neovim jsonc    editor
+#com.apple.automator.neovim application/json editor
+com.apple.automator.neovim csv    editor
+com.apple.automator.neovim opml    editor
+com.apple.automator.neovim xul    editor
+
+# MARKDOWN / RST
+pro.writer.mac rst    editor
+pro.writer.mac md    editor
+pro.writer.mac mdtxt    editor
+pro.writer.mac rmd    editor
+pro.writer.mac mark    editor
+pro.writer.mac markdown    editor
+pro.writer.mac multimarkdow    editor
+
+# SHELL
+com.apple.automator.neovim sh    editor
+com.apple.automator.neovim bash    editor
+com.apple.automator.neovim zsh    editor
+com.apple.automator.neovim ksh    editor
+com.apple.automator.neovim csh    editor
+com.apple.automator.neovim fish    editor
+com.apple.automator.neovim script    editor
+
+# HTML and derivates
+com.apple.automator.neovim html5    editor
+com.apple.automator.neovim xhtm    editor
+com.apple.automator.neovim xhtml    editor
+#com.apple.automator.neovim application/xhtml+xml    editor
+com.apple.automator.neovim rhtml    editor
+com.apple.automator.neovim jhtml    editor
+com.apple.automator.neovim phtml    editor
+com.apple.automator.neovim htmls    editor
+com.apple.automator.neovim manhtml    editor
+# Apache FancyIndexing pages
+com.apple.automator.neovim html?C=N;O=A   editor
+com.apple.automator.neovim html?C=N;O=D   editor
+com.apple.automator.neovim html?C=M;O=A   editor
+com.apple.automator.neovim html?C=M;O=D   editor
+com.apple.automator.neovim html?C=D;O=A   editor
+com.apple.automator.neovim html?C=D;O=D   editor
+com.apple.automator.neovim html?C=S;O=A   editor
+com.apple.automator.neovim html?C=S;O=D   editor
+
+# Shell Scripts / Configuration
+com.apple.automator.neovim command    editor
+
+com.apple.automator.neovim cmd    editor
+com.apple.automator.neovim bat    editor
+com.apple.automator.neovim vbs    editor
+com.apple.automator.neovim ps    editor
+com.apple.automator.neovim ps1    editor
+
+com.apple.automator.neovim rc    editor
+com.apple.automator.neovim inputrc    editor
+com.apple.automator.neovim bashrc    editor
+com.apple.automator.neovim bash_history    editor
+com.apple.automator.neovim shrc    editor
+com.apple.automator.neovim shinit    editor
+com.apple.automator.neovim profile    editor
+com.apple.automator.neovim zshrc    editor
+com.apple.automator.neovim zlogin    editor
+com.apple.automator.neovim zlogout    editor
+com.apple.automator.neovim zprofile    editor
+com.apple.automator.neovim zpreztorc    editor
+com.apple.automator.neovim zshenv    editor
+com.apple.automator.neovim zhistory    editor
+com.apple.automator.neovim env    editor
+com.apple.automator.neovim environment    editor
+com.apple.automator.neovim example    editor
+
+# Sublime Text Files
+com.apple.automator.neovim sublime-project    editor
+com.apple.automator.neovim sublime-workspace    editor
+com.apple.automator.neovim sublime-snippet    editor
+com.apple.automator.neovim sublime-build    editor
+com.apple.automator.neovim sublime-commands    editor
+com.apple.automator.neovim sublime-keymap    editor
+com.apple.automator.neovim sublime-mousemap    editor
+com.apple.automator.neovim sublime-macro    editor
+com.apple.automator.neovim sublime-syntax    editor
+com.apple.automator.neovim sublime-settings    editor
+com.apple.automator.neovim tmPreferences    editor
+com.apple.automator.neovim merged-ca-bundle    editor
+com.apple.automator.neovim user-ca-bundle    editor
+
+# Project Files
+com.apple.automator.neovim pro    editor
+
+# Programming Languages
+## https://github.com/adobe/brackets/blob/master/src/language/languages.json
+## https://gist.github.com/aymen-mouelhi/82c93fbcd25f091f2c13faa5e0d61760
+
+## JAVA / Android
+com.apple.automator.neovim java    editor
+com.apple.automator.neovim class    editor
+com.apple.automator.neovim vm    editor
+com.apple.automator.neovim mf    editor
+
+com.apple.JarLauncher jar    editor
+
+## JAVASCRIPT, etc...
+com.apple.automator.neovim js    editor
+com.apple.automator.neovim javascript    editor
+com.apple.automator.neovim jsx    editor
+
+com.apple.automator.neovim ts    editor
+com.apple.automator.neovim typescript    editor
+com.apple.automator.neovim tsx    editor
+
+com.apple.automator.neovim vue    editor
+
+com.apple.automator.neovim coffee    editor
+com.apple.automator.neovim _coffee    editor
+com.apple.automator.neovim cake    editor
+com.apple.automator.neovim cjsx    editor
+com.apple.automator.neovim iced    editor
+com.apple.automator.neovim eslint    editor
+com.apple.automator.neovim eslintrc    editor
+com.apple.automator.neovim eslintjs    editor
+com.apple.automator.neovim eslintjson    editor
+com.apple.automator.neovim es    editor
+
+## CSS
+com.apple.automator.neovim css    editor
+com.apple.automator.neovim scss    editor
+com.apple.automator.neovim less    editor
+com.apple.automator.neovim map    editor
+
+## ASP/.NET
+com.apple.automator.neovim asp    editor
+com.apple.automator.neovim aspx    editor
+com.apple.automator.neovim axd    editor
+com.apple.automator.neovim asmx    editor
+com.apple.automator.neovim ashx    editor
+
+## RUBY
+com.apple.automator.neovim rb    editor
+com.apple.automator.neovim ruby    editor
+com.apple.automator.neovim cr    editor
+
+## Python
+com.apple.automator.neovim py    editor
+com.apple.automator.neovim pip    editor
+
+## Haskell
+com.apple.automator.neovim hs    editor
+
+## Erlang / Elixir
+com.apple.automator.neovim erl    editor
+com.apple.automator.neovim exs    editor
+
+## Perl
+com.apple.automator.neovim pl    editor
+com.apple.automator.neovim perl    editor
+
+## PHP
+com.apple.automator.neovim php    editor
+com.apple.automator.neovim php3    editor
+com.apple.automator.neovim php4    editor
+com.apple.automator.neovim php5    editor
+com.apple.automator.neovim php7    editor
+com.apple.automator.neovim twig    editor
+
+## LaTeX
+com.apple.automator.neovim fd    editor
+com.apple.automator.neovim bst    editor
+com.apple.automator.neovim blg    editor
+com.apple.automator.neovim brf    editor
+com.apple.automator.neovim cls    editor
+com.apple.automator.neovim tex    editor
+com.apple.automator.neovim aux    editor
+com.apple.automator.neovim lof    editor
+com.apple.automator.neovim lot    editor
+com.apple.automator.neovim sty    editor
+
+com.apple.automator.neovim latexmkrc    editor
+com.apple.automator.neovim bib    editor
+
+## Clang, etc.
+com.apple.automator.neovim c    editor
+com.apple.automator.neovim h    editor
+com.apple.automator.neovim w    editor
+
+com.apple.automator.neovim cc    editor
+com.apple.automator.neovim cp    editor
+com.apple.automator.neovim c++    editor
+com.apple.automator.neovim cpp    editor
+com.apple.automator.neovim cxx    editor
+
+com.apple.automator.neovim h++    editor
+com.apple.automator.neovim hh    editor
+com.apple.automator.neovim hpp    editor
+com.apple.automator.neovim hxx    editor
+com.apple.automator.neovim inc    editor
+com.apple.automator.neovim inl    editor
+com.apple.automator.neovim icc    editor
+com.apple.automator.neovim ipp    editor
+com.apple.automator.neovim tpp    editor
+
+# Arduino
+com.apple.automator.neovim ino    editor
+
+# c#
+com.apple.automator.neovim cs    editor
+com.apple.automator.neovim cake    editor
+com.apple.automator.neovim csx    editor
+
+com.apple.automator.neovim csproj    editor
+com.apple.automator.neovim targets    editor
+
+com.apple.automator.neovim chs    editor
+
+# swift
+com.apple.automator.neovim swift    editor
+
+## Assembly
+com.apple.automator.neovim a    editor
+com.apple.automator.neovim r    editor
+com.apple.automator.neovim asm    editor
+com.apple.automator.neovim gas    editor
+com.apple.automator.neovim gasm    editor
+com.apple.automator.neovim nasm    editor
+com.apple.automator.neovim a51    editor
+com.apple.automator.neovim inc    editor
+
+### Instruction sets
+com.apple.automator.neovim arm    editor
+com.apple.automator.neovim arm32    editor
+com.apple.automator.neovim arm32v7    editor
+com.apple.automator.neovim arm32v8    editor
+com.apple.automator.neovim arm64     editor
+com.apple.automator.neovim arm64v7    editor
+com.apple.automator.neovim arm64v8    editor
+
+com.apple.automator.neovim x86     editor
+com.apple.automator.neovim x86-64     editor
+com.apple.automator.neovim AMD64     editor
+com.apple.automator.neovim mips     editor
+
+# Makefiles
+com.apple.automator.neovim m4    editor
+com.apple.automator.neovim am    editor
+
+com.apple.automator.neovim ac    editor
+com.apple.automator.neovim sub    editor
+
+com.apple.automator.neovim make    editor
+com.apple.automator.neovim cmake    editor
+com.apple.automator.neovim in    editor
+
+com.apple.automator.neovim bsd    editor
+com.apple.automator.neovim macos    editor
+com.apple.automator.neovim linux    editor
+
+
+## GOlang
+com.apple.automator.neovim go    editor
+com.apple.automator.neovim golang    editor
+com.apple.automator.neovim mod    editor
+com.apple.automator.neovim sum    editor
+
+#RUST
+com.apple.automator.neovim rst    editor
+com.apple.automator.neovim rust   editor
+com.apple.automator.neovim s    editor
+
+## Pascal
+com.apple.automator.neovim pas    editor
+
+# MISC / other languages
+com.apple.automator.neovim lua    editor
+
+com.apple.automator.neovim ahk    editor
+com.apple.automator.neovim ahkl    editor
+
+com.apple.automator.neovim au3    editor
+com.apple.automator.neovim awk    editor
+com.apple.automator.neovim auk    editor
+com.apple.automator.neovim gwak    editor
+com.apple.automator.neovim mawk    editor
+com.apple.automator.neovim nawk    editor
+
+com.apple.automator.neovim jq    editor
+
+com.apple.automator.neovim bb     editor
+
+com.apple.automator.neovim b    editor
+com.apple.automator.neovim bf    editor
+
+com.apple.automator.neovim ceylon    editor
+com.apple.automator.neovim ch    editor
+com.apple.automator.neovim ck    editor
+com.apple.automator.neovim cirru    editor
+com.apple.automator.neovim clw    editor
+
+com.apple.automator.neovim sql    editor
+
+# Docker
+com.apple.automator.neovim docker-compose editor
+
+# Terraform
+com.apple.automator.neovim tf editor
+com.apple.automator.neovim tfvar editor
+
+# Encodings
+com.apple.automator.neovim ascii    editor
+com.apple.automator.neovim ansi    editor
+com.apple.automator.neovim asc    editor
+com.apple.automator.neovim axt    editor
+com.apple.automator.neovim utf8    editor
+com.apple.automator.neovim utx    editor
+com.apple.automator.neovim tx8    editor
+
+com.apple.automator.neovim att    editor
+com.apple.automator.neovim xmp    editor
+
+com.apple.automator.neovim tt    editor
+com.apple.automator.neovim ver    editor
+
+com.apple.automator.neovim textile    editor
+com.apple.automator.neovim spec    editor
+com.apple.automator.neovim rml    editor
+
+# LOCALISATIONS
+com.apple.automator.neovim us    editor
+com.apple.automator.neovim es    editor
+com.apple.automator.neovim ger    editor
+com.apple.automator.neovim de    editor
+com.apple.automator.neovim fr    editor
+com.apple.automator.neovim it    editor
+com.apple.automator.neovim sk    editor
+com.apple.automator.neovim cs    editor
+
+# HASHES
+com.apple.automator.neovim hash    editor
+com.apple.automator.neovim crc    editor
+
+com.apple.automator.neovim md4    editor
+com.apple.automator.neovim md5    editor
+com.apple.automator.neovim sha    editor
+com.apple.automator.neovim sha1    editor
+com.apple.automator.neovim sha2    editor
+com.apple.automator.neovim sha265    editor
+com.apple.automator.neovim sha384    editor
+com.apple.automator.neovim sha512    editor
+
+com.apple.automator.neovim md4sum    editor
+com.apple.automator.neovim md5sum    editor
+com.apple.automator.neovim shasum    editor
+com.apple.automator.neovim sha1sum    editor
+com.apple.automator.neovim sha2sum    editor
+com.apple.automator.neovim sha265sum    editor
+com.apple.automator.neovim sha384sum    editor
+com.apple.automator.neovim sha512sum    editor
+
+com.apple.automator.neovim md4sums    editor
+com.apple.automator.neovim md5sums    editor
+com.apple.automator.neovim shasums    editor
+com.apple.automator.neovim sha1sums    editor
+com.apple.automator.neovim sha2sums    editor
+com.apple.automator.neovim sha265sums    editor
+com.apple.automator.neovim sha384sums    editor
+com.apple.automator.neovim sha512sums    editor
+
+# AppleScript
+com.apple.ScriptEditor2 applescript    editor
+com.apple.ScriptEditor2 scpt    editor
+
+## Pictures
+com.apple.Preview bmp    editor
+com.apple.Preview gif    editor
+com.apple.Preview ico    editor
+com.apple.Preview png    editor
+
+com.apple.Preview jpg    editor
+com.apple.Preview jpeg    editor
+com.apple.Preview jpg2000    editor
+com.apple.Preview jpeg2000    editor
+
+com.apple.Preview icns    editor
+
+com.apple.Preview tif    editor
+com.apple.Preview tiff   editor
+
+# RSS / Playlists
+com.apple.automator.neovim atom    editor
+com.apple.automator.neovim m3u    editor
+com.apple.automator.neovim m3u8    editor
+com.apple.automator.neovim pls    editor
+com.apple.automator.neovim playlist    editor
+com.apple.automator.neovim cue    editor
+
+# PDF / Books
+com.apple.Preview pdf    editor
+
+# URL Schemes
+net.langui.ContextMenuHelper   contextmenuhelper://    all

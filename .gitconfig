@@ -2,35 +2,34 @@
 	name = neovrnaz
 	email = neovrnaz@gmail.com
 [color]
-  # Enable colors in color-supporting terminals
   ui = auto
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [delta]
-    features = decorations
-    navigate = true
+  features = decorations
+  navigate = true
 [core]
-	edtior = nvim
-    pager = "delta --theme='Material'"
-	excludesfile = /Users/elijahgray/.gitignore_global
+  edtior = nvim
+  pager = delta
+  excludesfile = $HOME/.gitignore_global
 [pager]
-    diff = delta
-    show = delta
-    log = delta
-    blame = delta
-    reflog = delta
+  diff = delta
+  show = delta
+  log = delta
+  blame = delta
+  reflog = delta
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [alias]
-	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [merge]
-    conflictstyle = diff3
-	tool = bc
+  conflictstyle = diff3
+  tool = bc
 [diff]
-    colorMoved = default
+  colorMoved = default
 [mergetool "bc"]
-	trustExitCode = true
+  trustExitCode = true
