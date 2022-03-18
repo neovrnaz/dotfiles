@@ -39,13 +39,13 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
-defaults write NSGlobalDomain AppleMetricUnits -bool false
+# defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
+# defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+# defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
+# defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/Denver" > /dev/null
+# sudo systemsetup -settimezone "America/Denver" > /dev/null
 
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -291,6 +291,21 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 # Enable text replacements for all applications
 defaults write -g WebAutomaticTextReplacementEnabled -bool true
+
+# Chflags
+chflags hidden ~/Pictures
+chflags hidden ~/Music
+chflags hidden ~/Movies
+chflags hidden ~/Brewfile
+chflags hidden ~/bin
+
+# Default "Open With..." 
+duti -v ./default_apps.duti
+
+# Add dock icons
+dockutil --add /Applications/Terminal --after 'Finder'
+dockutil --add /Applications/Anki --after 'Finder'
+dockutil --add /Applications/Safari --after 'Finder'
 
 
 ###############################################################################

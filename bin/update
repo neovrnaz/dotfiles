@@ -13,5 +13,8 @@ omz update
 
 nvim +PlugUpdate +qall
 
+mas upgrade
+
 # Keep as last
 softwareupdate -i -a
+

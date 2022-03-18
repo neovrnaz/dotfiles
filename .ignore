@@ -13,3 +13,7 @@ Backups/JetBrains/*
 */Cache/*
 Library
 JetBrains
+.cfg
+.cache
+.oh-my-zsh/*
+!.oh-my-zsh/custom

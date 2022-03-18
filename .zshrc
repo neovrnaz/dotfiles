@@ -18,13 +18,10 @@ export PATH="$HOME/bin:$PATH"
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
 
-# Enable italics
 export TERM="xterm-256color"
-
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
 export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
-
+export THEME="material" 
 # Ruby
 # hint: make sure the path matches `ruby --version`
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"

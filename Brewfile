@@ -1,5 +1,4 @@
 tap "buo/cask-upgrade"
-tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -12,6 +11,7 @@ brew "xz"
 brew "python@3.9"
 brew "coreutils"
 brew "dockutil"
+brew "duti"
 brew "fd"
 brew "tesseract"
 brew "ffmpeg"
@@ -28,6 +28,7 @@ brew "pandoc"
 brew "python@3.10"
 brew "pipenv"
 brew "poppler"
+brew "progress"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "ripgrep"
@@ -36,8 +37,8 @@ brew "ruby"
 brew "subversion"
 brew "tmux"
 brew "vivid"
-brew "wallpaper"
 brew "zlib"
+brew "zsh-syntax-highlighting"
 cask "anki"
 cask "font-ia-writer-mono"
 cask "font-im-writing-nerd-font"
@@ -46,17 +47,8 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-roboto-mono-nerd-font"
 cask "font-sauce-code-pro-nerd-font"
 cask "font-source-code-pro"
+cask "gpg-suite"
 cask "jetbrains-toolbox"
-mas "AdBlock Pro", id: 1018301773
-mas "AudioBookBinder", id: 413969927
-mas "Caffeinated", id: 1362171212
-mas "Cascadea", id: 1432182561
-mas "ColorSlurp", id: 1287239339
-mas "Find Any File", id: 402569179
-mas "Paste", id: 967805235
-mas "Peek", id: 1554235898
-mas "Speeko", id: 1071468459
-mas "Tampermonkey", id: 1482490089
-mas "The Unarchiver", id: 425424353
-mas "Time Out", id: 402592703
-mas "Xcode", id: 497799835
+cask "monero-wallet"
+cask "tidal"
+cask "tor-browser"
