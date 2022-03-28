@@ -121,6 +121,7 @@ manual_downloads=(
     https://kinesis-ergo.com/download/advantage2-smartset-app-for-mac/
     https://www.kensington.com/software/kensingtonworks/
     https://nxmac.com/main/lingon-x/
+    https://nxmac.com/main/launchpad-manager/
 )
 
 read -r -p "[Enter] to open manual downloads"
