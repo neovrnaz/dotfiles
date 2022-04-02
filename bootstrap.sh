@@ -12,7 +12,6 @@ cd $HOME || { echo_error "cd $HOME failed"; exit 155; }
 echo "Requirements:"
 echo "- add 'Terminal' to Accessibility settings"
 echo "- sign into iCloud"
-echo "- sign into app store"
 echo "- run this script using 'caffeinate -i ./bootstrap'"
 echo "- have .extra file containing variables for git "
 read -r -p "Press [Enter] key after this..."
@@ -122,10 +121,11 @@ manual_downloads=(
     https://www.kensington.com/software/kensingtonworks/
     https://nxmac.com/main/lingon-x/
     https://nxmac.com/main/launchpad-manager/
+    https://nxmac.com/main/marked/
 )
 
 read -r -p "[Enter] to open manual downloads"
 for i in "${manual_downloads[@]}"
 do
-    open "$i"
+    open --url "$i"
 done

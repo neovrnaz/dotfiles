@@ -192,13 +192,13 @@ com.apple.automator.neovim opml    editor
 com.apple.automator.neovim xul    editor
 
 # MARKDOWN / RST
-pro.writer.mac rst    editor
-pro.writer.mac md    editor
-pro.writer.mac mdtxt    editor
-pro.writer.mac rmd    editor
-pro.writer.mac mark    editor
-pro.writer.mac markdown    editor
-pro.writer.mac multimarkdow    editor
+com.brettterpstra.marked2 rst    editor
+com.brettterpstra.marked2 md    editor
+com.brettterpstra.marked2 mdtxt    editor
+com.brettterpstra.marked2 rmd    editor
+com.brettterpstra.marked2 mark    editor
+com.brettterpstra.marked2 markdown    editor
+com.brettterpstra.marked2 multimarkdow    editor
 
 # SHELL
 com.apple.automator.neovim sh    editor

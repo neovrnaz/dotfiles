@@ -21,7 +21,6 @@ setopt HIST_NO_FUNCTIONS
 export TERM="xterm-256color"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
-export THEME="material" 
 # Ruby
 # hint: make sure the path matches `ruby --version`
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
@@ -55,13 +54,11 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
 --preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
 "
-
+# Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
-
-# Appearance
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
 
@@ -110,6 +107,24 @@ install() {
     echo Must learn to use tmux first! 
 }
 
+mkcdir () {
+    mkdir -p -- "$1" &&
+        cd -p -- "$1"
+}
+
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	open "$file"
+}
 
 ### Oh My Zsh ###
 
