@@ -32,12 +32,12 @@ nnoremap <silent> <CR> :noh<CR>
 
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
-" Shows most recent files
-
 " Hides the netrw banner
 " let g:netrw_banner=0
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+:command! Cdpl cd ~/Developer/Playground
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sheerun/vim-polyglot'

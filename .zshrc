@@ -54,6 +54,26 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
 --preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
 "
+
+# Colors
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+LIME_YELLOW=$(tput setaf 190)
+YELLOW=$(tput setaf 3)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+END=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+THEME="material"
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
@@ -125,6 +145,11 @@ rga-fzf() {
 	echo "opening $file" &&
 	open "$file"
 }
+
+# Replace date with gdate
+if [[ $(uname) -eq Darwin ]]; then
+    date() { gdate "$@" }
+fi
 
 ### Oh My Zsh ###
 
@@ -250,3 +275,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
 
 fi
+export PATH="/Users/elijahgray/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
