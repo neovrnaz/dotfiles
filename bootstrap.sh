@@ -13,27 +13,32 @@ POWDER_BLUE=$(tput setaf 153)
 BLUE=$(tput setaf 4)
 END=$(tput sgr0)
 
-echo_ok() { echo -e "${BLUE}$1""${END}"; }
+echo_ok() { echo -e "${GREEN}$1""${END}"; }
 echo_warn() { echo -e "${YELLOW}$1""${END}"; }
+echo_err() { echo -e "${RED}$1""${END}"; }
+echo_install() { echo -e "${BLUE}$1""${END}"; }
 err() {
-    echo "${RED}ERROR: $1"
-    echo_error "ERROR: $1"
+    echo_err "ERROR: $1"
     awk 'NR>L-4 && NR<L+4 { printf "%-5d%3s%s\n", NR, (NR==L?">>>":""),$0 }' L=$1 $0
     echo "${END}"
 }
 
-exists() {
-    command -v "$1" > /dev/null 2>&1
+_exists() {
+    command -v "$1" >/dev/null
+}
+
+var_is_set() {
+    declare -p "$1" &>/dev/null
 }
 
 cd "$HOME"
 
 on_start() {
     echo
-    echo "${LIME_YELLOW}       __      __  _____ __"         
+    echo "${LIME_YELLOW}       __      __  _____ __"
     echo "${GREEN}  ____/ /___  / /_/ __(_) /__  _____"
     echo "${RED} / __  / __ \/ __/ /_/ / / _ \/ ___/"
-    echo "${POWDER_BLUE}/ /_/ / /_/ / /_/ __/ / /  __(__  )" 
+    echo "${POWDER_BLUE}/ /_/ / /_/ / /_/ __/ / /  __(__  )"
     echo "${BLUE}\__,_/\____/\__/_/ /_/_/\___/____/${END}"
     echo
     echo "${BLUE} This script will help you set up your Mac"
@@ -46,31 +51,44 @@ on_start() {
     read -r -p "Press [Enter] key after this..."
 }
 
-[[ -f ~/.extra ]] && source .extra || echo "No ~/.extra was found"
-
 prompt_yn() {
     local yn
     while true; do
         read -pr "$1 " yn
         case $yn in
-            [Yy]* ) return 0;;
-            [Nn]* ) return 1;;
-            *) echo "Please answer with yes or no";;
+        [Yy]*) return 0 ;;
+        [Nn]*) return 1 ;;
+        *) echo "Please answer with yes or no" ;;
         esac
     done
 }
 
-install_cli_tools() {
-    if test "$(xcode-select -p)"; then
-        if prompt_yn "Command Line Tools not found. Would you like to install them now?"; then
-            echo_ok "Installing Xcode Command Line tools..."
-            xcode-select --install
-            echo_ok "Success! Xcode Command Line tools installed!"
+confirm_git_user() {
+    if ! var_is_set GIT_COMMITTER_NAME || ! var_is_set GIT_COMMITTER_EMAIL; then
+        if prompt_yn "Git env variables not found. Is it okay if we set them now?"; then
+            read -r -p "Please enter git config user.name:" GIT_COMMITTER_NAME
+            read -r -p "Great! Now, please enter git config user.email:" GIT_COMMITTER_EMAIL
         else
             exit
-
         fi
     fi
+}
+
+set_gitconfig() {
+    if [[ -f .gitconfig ]]; then
+        echo_warn ".gitconfig already exists!"
+        prompt_yn "Would you like to continue with the current .gitconfig?" || exit
+    fi
+    echo_ok "Creating .gitconfig"
+    git config --global user.name "$GIT_COMMITTER_NAME"
+    git config --global user.email "$GIT_COMMITTER_EMAIL"
+}
+
+install_cli_tools() {
+    _exists xcode-select && return
+    echo_install "Installing Xcode Command Line tools..."
+    xcode-select --install
+    echo_ok "Success! Xcode Command Line tools installed!"
 }
 
 generate_ssh_key() {
@@ -92,11 +110,11 @@ generate_ssh_key() {
         echo '  UseKeychain yes'
         echo '  AddKeysToAgent yes'
         echo '  IdentityFile ~/.ssh/id_ed25519'
-    } > ~/.ssh/config
+    } >~/.ssh/config
 
-    pbcopy < ~/.ssh/id_ed25519.pub
+    pbcopy <~/.ssh/id_ed25519.pub
     echo "id_rsa.pub has been copied to clipboard"
-    echo "Please add it to Github "
+    echo "Please add it to GitHub "
     open https://github.com/account/ssh
     read -r -p "Press [Enter] key after this..."
 
@@ -109,16 +127,16 @@ function config {
 }
 
 install_dotfiles() {
-    echo_ok "Copying dotfiles from GitHub"
-    git clone --bare git@github.com:$GIT_AUTHOR_NAME/dotfiles.git "$HOME"/.cfg
+    echo_install "Copying dotfiles from GitHub"
+    git clone --bare git@github.com:"$GIT_AUTHOR_NAME"/dotfiles.git "$HOME"/.cfg
     mkdir -p .config-backup
     config checkout
     if [ $? = 0 ]; then
-        echo "Checked out config.";
+        echo "Checked out config."
     else
-        echo "Backing up pre-existing dot files.";
+        echo "Backing up pre-existing dot files."
         config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-    fi;
+    fi
     config checkout
     config config status.showUntrackedFiles no
     rm README.md
@@ -126,68 +144,65 @@ install_dotfiles() {
 }
 
 install_homebrew() {
-    if ! exists brew; then
-        if prompt_yn "Homebrew not installed. Would you like to install it now?"; then
-            echo "Installing homebrew..."
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            echo "Installing mas"
-            brew install mas
-            echo "Installing Brewfile"
-            brew bundle install
-            brew cleanup
-        else
-            exit;
-        fi
-    fi
+    _exists brew && return
+    echo "Installing homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "Installing mas"
+    brew install mas
+    echo "Installing Brewfile"
+    brew bundle install
+    brew cleanup
 }
 
 install_packages() {
-    if prompt_yn "Would you like to install gem and npm packages?"; then
-        echo "Installing packages"
+    if prompt_yn "Want to install packages (npm and gem)?"; then
+        echo_install "Installing packages"
         gem install bundler
         npm install -g tldr
         echo_ok "Packages installed!"
     else
-        echo_ok "Skipping..."
-        return
+        echo_warn "Skipping..."
         return
     fi
 }
 
 setup_theme() {
-    if prompt_yn "Would you like to setup base16_theme?"; then
-        echo "Setting up theme for Terminal and NeoVim"
-        git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-        base16_"$THEME"
-    else 
-        echo_ok "Skipping..."
+    if var_is_set THEME; then
+        if prompt_yn "Would you like to set up base16_theme? as base16_$THEME?"; then
+            echo "Setting up theme for Terminal and NeoVim"
+            git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+            base16_"$THEME"
+        else
+            echo_warn "Skipping..."
+            return
+        fi
+    else
         return
     fi
 }
 
 write_defaults() {
     if prompt_yn "Do you want to write defaults with .macos?"; then
-        echo "Setting some Mac settings..."
+        echo_install "Writing defaults..."
         ./.macos
     else
-        echo_ok "Skipping..."
+        echo_warn "Skipping..."
         return
     fi
 }
 
 install_omz() {
-    if test "$(omz)"; then
-        if prompt_yn "Oh My Zsh isn't installed. Would you like to install it?"; then
-            echo "Backing up .zshrc"
-            cp .zshrc .zshrc.orig
-            echo "Installing Oh My Zsh..."
-            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-            rm .zshrc
-            mv .zshrc.orig .zshrc
-        else
-            echo_ok "Skipping..."
-            return
-        fi
+    _exists omz && return
+    if prompt_yn "Would you like to install Oh My Zsh?"; then
+        echo "Backing up .zshrc"
+        cp .zshrc .zshrc.orig
+        echo "Installing Oh My Zsh..."
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        rm .zshrc
+        mv .zshrc.orig .zshrc
+    else
+        echo "skipping..."
+        return
     fi
 }
 
@@ -196,46 +211,43 @@ install_nvim_plugins() {
         echo "Installing nvim Plugins"
         nvim +PlugInstall +qall
         ./bin/coc_extensions
-    else 
-        echo_ok "Skipping..."
+    else
+        echo "Skipping..."
         return
     fi
 }
 
-extra_download_urls() {
-    local manual_downloads=(
-        https://kinesis-ergo.com/download/advantage2-smartset-app-for-mac/
-        https://www.kensington.com/software/kensingtonworks/
-        https://nxmac.com/main/lingon-x/
-        https://nxmac.com/main/launchpad-manager/
-        https://nxmac.com/main/marked/
-    )
-    if prompt_yn "Would you like to open url's to apps that need to be installed manually?"; then
-        for i in "${manual_downloads[@]}"
-        do
-            open --url "$i"
-        done
-    else
-        echo_ok "Skipping"
-        return
+open_manual_downloads() {
+
+    if var_is_set MANUAL_DOWNLOADS; then
+        if prompt_yn "Manual download urls were found. Would you like to open these in a browser?"; then
+            for i in "${MANUAL_DOWNLOADS[@]}"; do
+                open --url "$i"
+            done
+        else
+            echo "Skipping..."
+            return
+        fi
     fi
 }
 
 on_finish() {
     echo
-    echo "${BLUE}Horray!"
-    echo 
-    echo "${LIME_YELLOW}       __      __  _____ __"         
+    echo "${BLUE}Hooray!"
+    echo
+    echo "${LIME_YELLOW}       __      __  _____ __"
     echo "${GREEN}  ____/ /___  / /_/ __(_) /__  _____"
     echo "${RED} / __  / __ \/ __/ /_/ / / _ \/ ___/"
-    echo "${POWDER_BLUE}/ /_/ / /_/ / /_/ __/ / /  __(__  )" 
+    echo "${POWDER_BLUE}/ /_/ / /_/ / /_/ __/ / /  __(__  )"
     echo "${BLUE}\__,_/\____/\__/_/ /_/_/\___/____/"
-    echo "${BLUE}                                   ...were installed successfully!${END}" 
-    echo 
+    echo "${BLUE}                                   ...was installed successfully!${END}"
+    echo
 }
 
 main() {
     on_start "$@"
+    confirm_git_user "$@"
+    set_gitconfig "$@"
     install_cli_tools "$@"
     generate_ssh_key "$@"
     install_dotfiles "$@"
@@ -245,7 +257,7 @@ main() {
     write_defaults "$@"
     install_omz "$@"
     install_nvim_plugins "$@"
-    on_finish "$@"
     extra_download_urls "$@"
+    on_finish "$@"
 }
 main "$@"
