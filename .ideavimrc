@@ -1,3 +1,6 @@
+set surround
 source $HOME/.config/nvim/init.vim
 sethandler n:vim i:ide
 sethandler <C-W> n:vim n:ide
+nmap <C-o> :action Back<CR>
+set surround
