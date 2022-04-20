@@ -86,6 +86,7 @@ export BAT_THEME="base16"
 
 # you-should-use
 export YSU_IGNORED_ALIASES=("e" "v" "g")
+export YSU_HARDCORE=1
 
 ### Functions ###
 
@@ -127,9 +128,10 @@ install() {
     echo Must learn to use tmux first! 
 }
 
-mkcdir () {
+mkcdir ()
+{
     mkdir -p -- "$1" &&
-        cd -p -- "$1"
+       cd -P -- "$1"
 }
 
 rga-fzf() {
@@ -219,14 +221,17 @@ ENABLE_CORRECTION="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# Change default Oh My Zsh custom directory so that they may be stored in dotfiles repo
+ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf fzf-tab you-should-use $plugins zsh-autosuggestions zsh-vi-mode)
+custom_plugins=(autoupdate fzf-tab you-should-use zsh-autosuggestions zsh-vi-mode)
+plugins=(git fzf $custom_plugins)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -257,8 +262,11 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
 
+# Clone the repositories of plugins that don't exit
+# [[ ! -d $ZSH_CUSTOM/plugins/ ]] 
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -272,7 +280,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls'
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="/Users/elijahgray/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
+
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
 
 fi
-export PATH="/Users/elijahgray/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
