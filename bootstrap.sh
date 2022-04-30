@@ -17,18 +17,15 @@ echo_ok() { echo -e "${GREEN}$1""${END}"; }
 echo_warn() { echo -e "${YELLOW}$1""${END}"; }
 echo_err() { echo -e "${RED}$1""${END}"; }
 echo_install() { echo -e "${BLUE}$1""${END}"; }
+var_is_set() { declare -p "$1" &>/dev/null; }
+var_is_unset() { ! declare -p "$1" &>/dev/null; }
 err() {
     echo_err "ERROR: $1"
     awk 'NR>L-4 && NR<L+4 { printf "%-5d%3s%s\n", NR, (NR==L?">>>":""),$0 }' L=$1 $0
     echo "${END}"
 }
-
 _exists() {
     command -v "$1" >/dev/null
-}
-
-var_is_set() {
-    declare -p "$1" &>/dev/null
 }
 
 cd "$HOME"
@@ -64,8 +61,8 @@ prompt_yn() {
 }
 
 confirm_git_user() {
-    if ! var_is_set GIT_COMMITTER_NAME || ! var_is_set GIT_COMMITTER_EMAIL; then
-        if prompt_yn "Git env variables not found. Is it okay if we set them now?"; then
+    if var_is_unset GIT_COMMITTER_NAME || var_is_unset GIT_COMMITTER_EMAIL; then
+        if prompt_yn "Git env variables not found. Do you want to set them now?"; then
             read -r -p "Please enter git config user.name:" GIT_COMMITTER_NAME
             read -r -p "Great! Now, please enter git config user.email:" GIT_COMMITTER_EMAIL
         else
@@ -167,16 +164,13 @@ install_packages() {
 }
 
 setup_theme() {
-    if var_is_set THEME; then
-        if prompt_yn "Would you like to set up base16_theme? as base16_$THEME?"; then
-            echo "Setting up theme for Terminal and NeoVim"
-            git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-            base16_"$THEME"
-        else
-            echo_warn "Skipping..."
-            return
-        fi
+    var_is_unset THEME && return
+    if prompt_yn "Would you like to set up base16_theme? as base16_$THEME?"; then
+        echo "Setting up theme for Terminal and NeoVim"
+        git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+        base16_"$THEME"
     else
+        echo_warn "Skipping..."
         return
     fi
 }
@@ -218,17 +212,22 @@ install_nvim_plugins() {
 }
 
 open_manual_downloads() {
-
-    if var_is_set MANUAL_DOWNLOADS; then
-        if prompt_yn "Manual download urls were found. Would you like to open these in a browser?"; then
-            for i in "${MANUAL_DOWNLOADS[@]}"; do
-                open --url "$i"
-            done
-        else
-            echo "Skipping..."
-            return
-        fi
+    var_is_unset MANUAL_DOWNLOADS && return
+    if prompt_yn "Manual download urls were found. Would you like to open these in a browser?"; then
+        for i in "${MANUAL_DOWNLOADS[@]}"; do
+            open --url "$i"
+        done
+    else
+        echo "Skipping..."
+        return
     fi
+}
+
+start_brew_services() {
+    local services="svim"
+        for i in "${services[@]}"; do
+        brew services start "$i"
+    done
 }
 
 on_finish() {
@@ -244,6 +243,13 @@ on_finish() {
     echo
 }
 
+if [ "$1" == "-h" ]; then
+    echo "Usage: $0"
+    echo "  -h    Prints help"
+
+    exit 1
+fi
+
 main() {
     on_start "$@"
     confirm_git_user "$@"
@@ -258,6 +264,7 @@ main() {
     install_omz "$@"
     install_nvim_plugins "$@"
     extra_download_urls "$@"
+    start_brew_services "$@"
     on_finish "$@"
 }
 main "$@"

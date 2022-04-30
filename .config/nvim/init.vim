@@ -37,7 +37,7 @@ nnoremap <Leader>r :source $MYVIMRC<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-:command! Cdpl cd ~/Developer/Playground
+:command! Pl cd ~/Developer/Playgrounds
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -63,6 +63,7 @@ Plug 'turbio/bracey.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/vim-markdown'
+Plug 'mtth/scratch.vim'
 call plug#end()
 
 source $HOME/.config/nvim/coc.vim
@@ -86,4 +87,3 @@ highlight Comment cterm=italic
 " Uncomment for Advantage Keyboard syntax highlighting
 " autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
 
-inoremap <C-Space> <C-n>

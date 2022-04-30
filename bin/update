@@ -23,7 +23,7 @@ err() {
 
 on_start() {
     echo
-    echo "${BLUE}Updating Mac"
+    echo "${BLUE}Updating System"
     echo "${LIME_YELLOW}                   __      __           "
     echo "${GREEN}  __  ______  ____/ /___ _/ /____  _____      "
     echo "${RED} / / / / __ \/ __  / __ \`/ __/ _ \/ ___/       "

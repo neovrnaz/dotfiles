@@ -292,6 +292,10 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 # Enable text replacements for all applications
 defaults write -g WebAutomaticTextReplacementEnabled -bool true
 
+# Kill ring
+defaults write -g NSTextKillRingSize -int 6
+defaults write -g NSRepeatCountBinding -string “u”
+
 # Chflags
 chflags hidden ~/Pictures
 chflags hidden ~/Music
