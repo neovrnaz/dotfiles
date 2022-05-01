@@ -39,6 +39,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 :command! Pl cd ~/Developer/Playgrounds
 
+" Javascript
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf'

@@ -98,7 +98,7 @@ chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 ###############################################################################
 
 # Set the icon size of Dock items to 70 pixels
-defaults write com.apple.dock tilesize -int 70
+defaults write com.apple.dock tilesize -int 65
 
 # Change minimize/maximize window effect
 # defaults write com.apple.dock mineffect -string "scale"

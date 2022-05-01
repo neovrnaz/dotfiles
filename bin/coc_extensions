@@ -17,5 +17,5 @@ then
   echo '{"dependencies":{}}'> package.json
 fi
 # Change extension names to the extensions you need
-extensions=(coc-snippets coc-tsserver coc-json coc-html coc-css coc-sh)
+extensions=(coc-snippets coc-tsserver coc-json coc-html coc-css coc-sh coc-prettier coc-eslint coc-jsref coc-emmet)
 npm install ${extensions[@]} --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
