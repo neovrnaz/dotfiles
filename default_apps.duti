@@ -40,156 +40,156 @@ com.jetbrains.datagrip sqlite editor
 com.jetbrains.datagrip itdb editor
 
 # Fancytext
-com.apple.automator.neovim rtf    editor
-com.apple.automator.neovim public.rtf    editor
+com.macromates.TextMate rtf    editor
+com.macromates.TextMate public.rtf    editor
 
 # Unknown filetypes
-com.apple.automator.neovim public.data    editor
+com.macromates.TextMate public.data    editor
 # executables
-com.apple.automator.neovim public.unix-executable    editor
+com.macromates.TextMate public.unix-executable    editor
 
 # Plaintex
-com.apple.automator.neovim txt    editor
-com.apple.automator.neovim public.plain-text    editor
+com.macromates.TextMate txt    editor
+com.macromates.TextMate public.plain-text    editor
 
-com.apple.automator.neovim text    editor
-com.apple.automator.neovim dic    editor
-com.apple.automator.neovim dict    editor
-com.apple.automator.neovim nfo    editor
-com.apple.automator.neovim diz    editor
-com.apple.automator.neovim inf    editor
-com.apple.automator.neovim info    editor
-com.apple.automator.neovim label    editor
-com.apple.automator.neovim properties    editor
+com.macromates.TextMate text    editor
+com.macromates.TextMate dic    editor
+com.macromates.TextMate dict    editor
+com.macromates.TextMate nfo    editor
+com.macromates.TextMate diz    editor
+com.macromates.TextMate inf    editor
+com.macromates.TextMate info    editor
+com.macromates.TextMate label    editor
+com.macromates.TextMate properties    editor
 
-com.apple.automator.neovim tmp    editor
-com.apple.automator.neovim temp    editor
-com.apple.automator.neovim tpl    editor
-com.apple.automator.neovim tmpl    editor
-com.apple.automator.neovim template    editor
-com.apple.automator.neovim manifest    editor
+com.macromates.TextMate tmp    editor
+com.macromates.TextMate temp    editor
+com.macromates.TextMate tpl    editor
+com.macromates.TextMate tmpl    editor
+com.macromates.TextMate template    editor
+com.macromates.TextMate manifest    editor
 
 ## LOGGING
-com.apple.automator.neovim log    editor
-com.apple.automator.neovim err    editor
-com.apple.automator.neovim crash    editor
+com.macromates.TextMate log    editor
+com.macromates.TextMate err    editor
+com.macromates.TextMate crash    editor
 
 # Samba log file
-com.apple.automator.neovim nmbd    editor
+com.macromates.TextMate nmbd    editor
 
-com.apple.automator.neovim panic    editor
-com.apple.automator.neovim report    editor
+com.macromates.TextMate panic    editor
+com.macromates.TextMate report    editor
 
 ## Config files
-com.apple.automator.neovim cfg    editor
-com.apple.automator.neovim cnf    editor
-com.apple.automator.neovim conf    editor
-com.apple.automator.neovim config    editor
-com.apple.automator.neovim configure    editor
-com.apple.automator.neovim prop    editor
-com.apple.automator.neovim setting    editor
-com.apple.automator.neovim settings    editor
-com.apple.automator.neovim bak    editor
-com.apple.automator.neovim rule    editor
-com.apple.automator.neovim rules    editor
+com.macromates.TextMate cfg    editor
+com.macromates.TextMate cnf    editor
+com.macromates.TextMate conf    editor
+com.macromates.TextMate config    editor
+com.macromates.TextMate configure    editor
+com.macromates.TextMate prop    editor
+com.macromates.TextMate setting    editor
+com.macromates.TextMate settings    editor
+com.macromates.TextMate bak    editor
+com.macromates.TextMate rule    editor
+com.macromates.TextMate rules    editor
 
-com.apple.automator.neovim vmwarevm    editor
+com.macromates.TextMate vmwarevm    editor
 
 # SystemD
-com.apple.automator.neovim service    editor
+com.macromates.TextMate service    editor
 
-com.apple.automator.neovim editorconfig    editor
-com.apple.automator.neovim lock    editor
-com.apple.automator.neovim duti    editor
+com.macromates.TextMate editorconfig    editor
+com.macromates.TextMate lock    editor
+com.macromates.TextMate duti    editor
 com.vladbadea.plisteditor plist    all
 
 ## GIT
-com.apple.automator.neovim git    editor
-com.apple.automator.neovim gitignore    editor
-com.apple.automator.neovim gitmodules    editor
-com.apple.automator.neovim gitconfig    editor
-com.apple.automator.neovim git_message    editor
-com.apple.automator.neovim gitattributes    editor
+com.macromates.TextMate git    editor
+com.macromates.TextMate gitignore    editor
+com.macromates.TextMate gitmodules    editor
+com.macromates.TextMate gitconfig    editor
+com.macromates.TextMate git_message    editor
+com.macromates.TextMate gitattributes    editor
 
-com.apple.automator.neovim patch    editor
+com.macromates.TextMate patch    editor
 
 ## VIM
-com.apple.automator.neovim vim    editor
-com.apple.automator.neovim neovim    editor
-com.apple.automator.neovim vimrc    editor
-com.apple.automator.neovim viminfo    editor
+com.macromates.TextMate vim    editor
+com.macromates.TextMate neovim    editor
+com.macromates.TextMate vimrc    editor
+com.macromates.TextMate viminfo    editor
 
 ### Apache
-com.apple.automator.neovim apacheconf    editor
-com.apple.automator.neovim vhost    editor
+com.macromates.TextMate apacheconf    editor
+com.macromates.TextMate vhost    editor
 
 # Certs, GNUPG, PGP, GPG, Keys and Secrets
-com.apple.automator.neovim pem    editor
-com.apple.automator.neovim pub    editor
-com.apple.automator.neovim key    editor
-com.apple.automator.neovim rsa    editor
-com.apple.automator.neovim dsa    editor
-com.apple.automator.neovim ca    editor
-com.apple.automator.neovim crt    editor
-com.apple.automator.neovim csr    editor
-com.apple.automator.neovim cert    editor
-com.apple.automator.neovim x509    editor
-com.apple.automator.neovim rev    editor
-com.apple.automator.neovim gpg    editor
-com.apple.automator.neovim pgp    editor
-com.apple.automator.neovim sig    editor
+com.macromates.TextMate pem    editor
+com.macromates.TextMate pub    editor
+com.macromates.TextMate key    editor
+com.macromates.TextMate rsa    editor
+com.macromates.TextMate dsa    editor
+com.macromates.TextMate ca    editor
+com.macromates.TextMate crt    editor
+com.macromates.TextMate csr    editor
+com.macromates.TextMate cert    editor
+com.macromates.TextMate x509    editor
+com.macromates.TextMate rev    editor
+com.macromates.TextMate gpg    editor
+com.macromates.TextMate pgp    editor
+com.macromates.TextMate sig    editor
 
 # SUBTITLES
-com.apple.automator.neovim srt    editor
-com.apple.automator.neovim vtt    editor
-com.apple.automator.neovim sub    editor
-com.apple.automator.neovim io.mpv.sub     editor
-com.apple.automator.neovim idx    editor
-com.apple.automator.neovim io.mpv.vobsub   editor
-com.apple.automator.neovim ass    editor
-com.apple.automator.neovim vss    editor
+com.macromates.TextMate srt    editor
+com.macromates.TextMate vtt    editor
+com.macromates.TextMate sub    editor
+com.macromates.TextMate io.mpv.sub     editor
+com.macromates.TextMate idx    editor
+com.macromates.TextMate io.mpv.vobsub   editor
+com.macromates.TextMate ass    editor
+com.macromates.TextMate vss    editor
 
 # LICENSES / readme
 # eg.: read.me
-com.apple.automator.neovim me    editor
-com.apple.automator.neovim readme    editor
+com.macromates.TextMate me    editor
+com.macromates.TextMate readme    editor
 
-com.apple.automator.neovim lic    editor
-com.apple.automator.neovim license    editor
-com.apple.automator.neovim gpl    editor
-com.apple.automator.neovim gpl2    editor
-com.apple.automator.neovim gpl3    editor
-com.apple.automator.neovim mit    editor
-com.apple.automator.neovim apache    editor
-com.apple.automator.neovim mozilla    editor
+com.macromates.TextMate lic    editor
+com.macromates.TextMate license    editor
+com.macromates.TextMate gpl    editor
+com.macromates.TextMate gpl2    editor
+com.macromates.TextMate gpl3    editor
+com.macromates.TextMate mit    editor
+com.macromates.TextMate apache    editor
+com.macromates.TextMate mozilla    editor
 
 # Markup / Configuration Files
 # XML
-com.apple.automator.neovim xml    editor
-#com.apple.automator.neovim application/xml editor
-#com.apple.automator.neovim text/xml    editor
-#com.apple.automator.neovim application/atom+xml    editor
-#com.apple.automator.neovim application/xhtml+xml    editor
-com.apple.automator.neovim ovf    editor
-com.apple.automator.neovim mobileconfig    editor
-com.apple.automator.neovim reg    editor
-com.apple.automator.neovim strings    editor
+com.macromates.TextMate xml    editor
+#com.macromates.TextMate application/xml editor
+#com.macromates.TextMate text/xml    editor
+#com.macromates.TextMate application/atom+xml    editor
+#com.macromates.TextMate application/xhtml+xml    editor
+com.macromates.TextMate ovf    editor
+com.macromates.TextMate mobileconfig    editor
+com.macromates.TextMate reg    editor
+com.macromates.TextMate strings    editor
 
 # Calibre metadata
-com.apple.automator.neovim opf    editor
+com.macromates.TextMate opf    editor
 
-com.apple.automator.neovim xul    editor
-#com.apple.automator.neovim application/vnd.mozilla.xul+xml    editor
+com.macromates.TextMate xul    editor
+#com.macromates.TextMate application/vnd.mozilla.xul+xml    editor
 
-com.apple.automator.neovim yml    editor
-com.apple.automator.neovim yaml    editor
-com.apple.automator.neovim ini    editor
-com.apple.automator.neovim json    editor
-com.apple.automator.neovim jsonc    editor
-#com.apple.automator.neovim application/json editor
-com.apple.automator.neovim csv    editor
-com.apple.automator.neovim opml    editor
-com.apple.automator.neovim xul    editor
+com.macromates.TextMate yml    editor
+com.macromates.TextMate yaml    editor
+com.macromates.TextMate ini    editor
+com.macromates.TextMate json    editor
+com.macromates.TextMate jsonc    editor
+#com.macromates.TextMate application/json editor
+com.macromates.TextMate csv    editor
+com.macromates.TextMate opml    editor
+com.macromates.TextMate xul    editor
 
 # MARKDOWN / RST
 com.brettterpstra.marked2 rst    editor
@@ -201,354 +201,354 @@ com.brettterpstra.marked2 markdown    editor
 com.brettterpstra.marked2 multimarkdow    editor
 
 # SHELL
-com.apple.automator.neovim sh    editor
-com.apple.automator.neovim bash    editor
-com.apple.automator.neovim zsh    editor
-com.apple.automator.neovim ksh    editor
-com.apple.automator.neovim csh    editor
-com.apple.automator.neovim fish    editor
-com.apple.automator.neovim script    editor
+com.macromates.TextMate sh    editor
+com.macromates.TextMate bash    editor
+com.macromates.TextMate zsh    editor
+com.macromates.TextMate ksh    editor
+com.macromates.TextMate csh    editor
+com.macromates.TextMate fish    editor
+com.macromates.TextMate script    editor
 
 # HTML and derivates
-com.apple.automator.neovim html5    editor
-com.apple.automator.neovim xhtm    editor
-com.apple.automator.neovim xhtml    editor
-#com.apple.automator.neovim application/xhtml+xml    editor
-com.apple.automator.neovim rhtml    editor
-com.apple.automator.neovim jhtml    editor
-com.apple.automator.neovim phtml    editor
-com.apple.automator.neovim htmls    editor
-com.apple.automator.neovim manhtml    editor
+com.macromates.TextMate html5    editor
+com.macromates.TextMate xhtm    editor
+com.macromates.TextMate xhtml    editor
+#com.macromates.TextMate application/xhtml+xml    editor
+com.macromates.TextMate rhtml    editor
+com.macromates.TextMate jhtml    editor
+com.macromates.TextMate phtml    editor
+com.macromates.TextMate htmls    editor
+com.macromates.TextMate manhtml    editor
 # Apache FancyIndexing pages
-com.apple.automator.neovim html?C=N;O=A   editor
-com.apple.automator.neovim html?C=N;O=D   editor
-com.apple.automator.neovim html?C=M;O=A   editor
-com.apple.automator.neovim html?C=M;O=D   editor
-com.apple.automator.neovim html?C=D;O=A   editor
-com.apple.automator.neovim html?C=D;O=D   editor
-com.apple.automator.neovim html?C=S;O=A   editor
-com.apple.automator.neovim html?C=S;O=D   editor
+com.macromates.TextMate html?C=N;O=A   editor
+com.macromates.TextMate html?C=N;O=D   editor
+com.macromates.TextMate html?C=M;O=A   editor
+com.macromates.TextMate html?C=M;O=D   editor
+com.macromates.TextMate html?C=D;O=A   editor
+com.macromates.TextMate html?C=D;O=D   editor
+com.macromates.TextMate html?C=S;O=A   editor
+com.macromates.TextMate html?C=S;O=D   editor
 
 # Shell Scripts / Configuration
-com.apple.automator.neovim command    editor
+com.macromates.TextMate command    editor
 
-com.apple.automator.neovim cmd    editor
-com.apple.automator.neovim bat    editor
-com.apple.automator.neovim vbs    editor
-com.apple.automator.neovim ps    editor
-com.apple.automator.neovim ps1    editor
+com.macromates.TextMate cmd    editor
+com.macromates.TextMate bat    editor
+com.macromates.TextMate vbs    editor
+com.macromates.TextMate ps    editor
+com.macromates.TextMate ps1    editor
 
-com.apple.automator.neovim rc    editor
-com.apple.automator.neovim inputrc    editor
-com.apple.automator.neovim bashrc    editor
-com.apple.automator.neovim bash_history    editor
-com.apple.automator.neovim shrc    editor
-com.apple.automator.neovim shinit    editor
-com.apple.automator.neovim profile    editor
-com.apple.automator.neovim zshrc    editor
-com.apple.automator.neovim zlogin    editor
-com.apple.automator.neovim zlogout    editor
-com.apple.automator.neovim zprofile    editor
-com.apple.automator.neovim zpreztorc    editor
-com.apple.automator.neovim zshenv    editor
-com.apple.automator.neovim zhistory    editor
-com.apple.automator.neovim env    editor
-com.apple.automator.neovim environment    editor
-com.apple.automator.neovim example    editor
+com.macromates.TextMate rc    editor
+com.macromates.TextMate inputrc    editor
+com.macromates.TextMate bashrc    editor
+com.macromates.TextMate bash_history    editor
+com.macromates.TextMate shrc    editor
+com.macromates.TextMate shinit    editor
+com.macromates.TextMate profile    editor
+com.macromates.TextMate zshrc    editor
+com.macromates.TextMate zlogin    editor
+com.macromates.TextMate zlogout    editor
+com.macromates.TextMate zprofile    editor
+com.macromates.TextMate zpreztorc    editor
+com.macromates.TextMate zshenv    editor
+com.macromates.TextMate zhistory    editor
+com.macromates.TextMate env    editor
+com.macromates.TextMate environment    editor
+com.macromates.TextMate example    editor
 
 # Sublime Text Files
-com.apple.automator.neovim sublime-project    editor
-com.apple.automator.neovim sublime-workspace    editor
-com.apple.automator.neovim sublime-snippet    editor
-com.apple.automator.neovim sublime-build    editor
-com.apple.automator.neovim sublime-commands    editor
-com.apple.automator.neovim sublime-keymap    editor
-com.apple.automator.neovim sublime-mousemap    editor
-com.apple.automator.neovim sublime-macro    editor
-com.apple.automator.neovim sublime-syntax    editor
-com.apple.automator.neovim sublime-settings    editor
-com.apple.automator.neovim tmPreferences    editor
-com.apple.automator.neovim merged-ca-bundle    editor
-com.apple.automator.neovim user-ca-bundle    editor
+com.macromates.TextMate sublime-project    editor
+com.macromates.TextMate sublime-workspace    editor
+com.macromates.TextMate sublime-snippet    editor
+com.macromates.TextMate sublime-build    editor
+com.macromates.TextMate sublime-commands    editor
+com.macromates.TextMate sublime-keymap    editor
+com.macromates.TextMate sublime-mousemap    editor
+com.macromates.TextMate sublime-macro    editor
+com.macromates.TextMate sublime-syntax    editor
+com.macromates.TextMate sublime-settings    editor
+com.macromates.TextMate tmPreferences    editor
+com.macromates.TextMate merged-ca-bundle    editor
+com.macromates.TextMate user-ca-bundle    editor
 
 # Project Files
-com.apple.automator.neovim pro    editor
+com.macromates.TextMate pro    editor
 
 # Programming Languages
 ## https://github.com/adobe/brackets/blob/master/src/language/languages.json
 ## https://gist.github.com/aymen-mouelhi/82c93fbcd25f091f2c13faa5e0d61760
 
 ## JAVA / Android
-com.apple.automator.neovim java    editor
-com.apple.automator.neovim class    editor
-com.apple.automator.neovim vm    editor
-com.apple.automator.neovim mf    editor
+com.macromates.TextMate java    editor
+com.macromates.TextMate class    editor
+com.macromates.TextMate vm    editor
+com.macromates.TextMate mf    editor
 
 com.apple.JarLauncher jar    editor
 
 ## JAVASCRIPT, etc...
-com.apple.automator.neovim js    editor
-com.apple.automator.neovim javascript    editor
-com.apple.automator.neovim jsx    editor
+com.macromates.TextMate js    editor
+com.macromates.TextMate javascript    editor
+com.macromates.TextMate jsx    editor
 
-com.apple.automator.neovim ts    editor
-com.apple.automator.neovim typescript    editor
-com.apple.automator.neovim tsx    editor
+com.macromates.TextMate ts    editor
+com.macromates.TextMate typescript    editor
+com.macromates.TextMate tsx    editor
 
-com.apple.automator.neovim vue    editor
+com.macromates.TextMate vue    editor
 
-com.apple.automator.neovim coffee    editor
-com.apple.automator.neovim _coffee    editor
-com.apple.automator.neovim cake    editor
-com.apple.automator.neovim cjsx    editor
-com.apple.automator.neovim iced    editor
-com.apple.automator.neovim eslint    editor
-com.apple.automator.neovim eslintrc    editor
-com.apple.automator.neovim eslintjs    editor
-com.apple.automator.neovim eslintjson    editor
-com.apple.automator.neovim es    editor
+com.macromates.TextMate coffee    editor
+com.macromates.TextMate _coffee    editor
+com.macromates.TextMate cake    editor
+com.macromates.TextMate cjsx    editor
+com.macromates.TextMate iced    editor
+com.macromates.TextMate eslint    editor
+com.macromates.TextMate eslintrc    editor
+com.macromates.TextMate eslintjs    editor
+com.macromates.TextMate eslintjson    editor
+com.macromates.TextMate es    editor
 
 ## CSS
-com.apple.automator.neovim css    editor
-com.apple.automator.neovim scss    editor
-com.apple.automator.neovim less    editor
-com.apple.automator.neovim map    editor
+com.macromates.TextMate css    editor
+com.macromates.TextMate scss    editor
+com.macromates.TextMate less    editor
+com.macromates.TextMate map    editor
 
 ## ASP/.NET
-com.apple.automator.neovim asp    editor
-com.apple.automator.neovim aspx    editor
-com.apple.automator.neovim axd    editor
-com.apple.automator.neovim asmx    editor
-com.apple.automator.neovim ashx    editor
+com.macromates.TextMate asp    editor
+com.macromates.TextMate aspx    editor
+com.macromates.TextMate axd    editor
+com.macromates.TextMate asmx    editor
+com.macromates.TextMate ashx    editor
 
 ## RUBY
-com.apple.automator.neovim rb    editor
-com.apple.automator.neovim ruby    editor
-com.apple.automator.neovim cr    editor
+com.macromates.TextMate rb    editor
+com.macromates.TextMate ruby    editor
+com.macromates.TextMate cr    editor
 
 ## Python
-com.apple.automator.neovim py    editor
-com.apple.automator.neovim pip    editor
+com.macromates.TextMate py    editor
+com.macromates.TextMate pip    editor
 
 ## Haskell
-com.apple.automator.neovim hs    editor
+com.macromates.TextMate hs    editor
 
 ## Erlang / Elixir
-com.apple.automator.neovim erl    editor
-com.apple.automator.neovim exs    editor
+com.macromates.TextMate erl    editor
+com.macromates.TextMate exs    editor
 
 ## Perl
-com.apple.automator.neovim pl    editor
-com.apple.automator.neovim perl    editor
+com.macromates.TextMate pl    editor
+com.macromates.TextMate perl    editor
 
 ## PHP
-com.apple.automator.neovim php    editor
-com.apple.automator.neovim php3    editor
-com.apple.automator.neovim php4    editor
-com.apple.automator.neovim php5    editor
-com.apple.automator.neovim php7    editor
-com.apple.automator.neovim twig    editor
+com.macromates.TextMate php    editor
+com.macromates.TextMate php3    editor
+com.macromates.TextMate php4    editor
+com.macromates.TextMate php5    editor
+com.macromates.TextMate php7    editor
+com.macromates.TextMate twig    editor
 
 ## LaTeX
-com.apple.automator.neovim fd    editor
-com.apple.automator.neovim bst    editor
-com.apple.automator.neovim blg    editor
-com.apple.automator.neovim brf    editor
-com.apple.automator.neovim cls    editor
-com.apple.automator.neovim tex    editor
-com.apple.automator.neovim aux    editor
-com.apple.automator.neovim lof    editor
-com.apple.automator.neovim lot    editor
-com.apple.automator.neovim sty    editor
+com.macromates.TextMate fd    editor
+com.macromates.TextMate bst    editor
+com.macromates.TextMate blg    editor
+com.macromates.TextMate brf    editor
+com.macromates.TextMate cls    editor
+com.macromates.TextMate tex    editor
+com.macromates.TextMate aux    editor
+com.macromates.TextMate lof    editor
+com.macromates.TextMate lot    editor
+com.macromates.TextMate sty    editor
 
-com.apple.automator.neovim latexmkrc    editor
-com.apple.automator.neovim bib    editor
+com.macromates.TextMate latexmkrc    editor
+com.macromates.TextMate bib    editor
 
 ## Clang, etc.
-com.apple.automator.neovim c    editor
-com.apple.automator.neovim h    editor
-com.apple.automator.neovim w    editor
+com.macromates.TextMate c    editor
+com.macromates.TextMate h    editor
+com.macromates.TextMate w    editor
 
-com.apple.automator.neovim cc    editor
-com.apple.automator.neovim cp    editor
-com.apple.automator.neovim c++    editor
-com.apple.automator.neovim cpp    editor
-com.apple.automator.neovim cxx    editor
+com.macromates.TextMate cc    editor
+com.macromates.TextMate cp    editor
+com.macromates.TextMate c++    editor
+com.macromates.TextMate cpp    editor
+com.macromates.TextMate cxx    editor
 
-com.apple.automator.neovim h++    editor
-com.apple.automator.neovim hh    editor
-com.apple.automator.neovim hpp    editor
-com.apple.automator.neovim hxx    editor
-com.apple.automator.neovim inc    editor
-com.apple.automator.neovim inl    editor
-com.apple.automator.neovim icc    editor
-com.apple.automator.neovim ipp    editor
-com.apple.automator.neovim tpp    editor
+com.macromates.TextMate h++    editor
+com.macromates.TextMate hh    editor
+com.macromates.TextMate hpp    editor
+com.macromates.TextMate hxx    editor
+com.macromates.TextMate inc    editor
+com.macromates.TextMate inl    editor
+com.macromates.TextMate icc    editor
+com.macromates.TextMate ipp    editor
+com.macromates.TextMate tpp    editor
 
 # Arduino
-com.apple.automator.neovim ino    editor
+com.macromates.TextMate ino    editor
 
 # c#
-com.apple.automator.neovim cs    editor
-com.apple.automator.neovim cake    editor
-com.apple.automator.neovim csx    editor
+com.macromates.TextMate cs    editor
+com.macromates.TextMate cake    editor
+com.macromates.TextMate csx    editor
 
-com.apple.automator.neovim csproj    editor
-com.apple.automator.neovim targets    editor
+com.macromates.TextMate csproj    editor
+com.macromates.TextMate targets    editor
 
-com.apple.automator.neovim chs    editor
+com.macromates.TextMate chs    editor
 
 # swift
-com.apple.automator.neovim swift    editor
+com.macromates.TextMate swift    editor
 
 ## Assembly
-com.apple.automator.neovim a    editor
-com.apple.automator.neovim r    editor
-com.apple.automator.neovim asm    editor
-com.apple.automator.neovim gas    editor
-com.apple.automator.neovim gasm    editor
-com.apple.automator.neovim nasm    editor
-com.apple.automator.neovim a51    editor
-com.apple.automator.neovim inc    editor
+com.macromates.TextMate a    editor
+com.macromates.TextMate r    editor
+com.macromates.TextMate asm    editor
+com.macromates.TextMate gas    editor
+com.macromates.TextMate gasm    editor
+com.macromates.TextMate nasm    editor
+com.macromates.TextMate a51    editor
+com.macromates.TextMate inc    editor
 
 ### Instruction sets
-com.apple.automator.neovim arm    editor
-com.apple.automator.neovim arm32    editor
-com.apple.automator.neovim arm32v7    editor
-com.apple.automator.neovim arm32v8    editor
-com.apple.automator.neovim arm64     editor
-com.apple.automator.neovim arm64v7    editor
-com.apple.automator.neovim arm64v8    editor
+com.macromates.TextMate arm    editor
+com.macromates.TextMate arm32    editor
+com.macromates.TextMate arm32v7    editor
+com.macromates.TextMate arm32v8    editor
+com.macromates.TextMate arm64     editor
+com.macromates.TextMate arm64v7    editor
+com.macromates.TextMate arm64v8    editor
 
-com.apple.automator.neovim x86     editor
-com.apple.automator.neovim x86-64     editor
-com.apple.automator.neovim AMD64     editor
-com.apple.automator.neovim mips     editor
+com.macromates.TextMate x86     editor
+com.macromates.TextMate x86-64     editor
+com.macromates.TextMate AMD64     editor
+com.macromates.TextMate mips     editor
 
 # Makefiles
-com.apple.automator.neovim m4    editor
-com.apple.automator.neovim am    editor
+com.macromates.TextMate m4    editor
+com.macromates.TextMate am    editor
 
-com.apple.automator.neovim ac    editor
-com.apple.automator.neovim sub    editor
+com.macromates.TextMate ac    editor
+com.macromates.TextMate sub    editor
 
-com.apple.automator.neovim make    editor
-com.apple.automator.neovim cmake    editor
-com.apple.automator.neovim in    editor
+com.macromates.TextMate make    editor
+com.macromates.TextMate cmake    editor
+com.macromates.TextMate in    editor
 
-com.apple.automator.neovim bsd    editor
-com.apple.automator.neovim macos    editor
-com.apple.automator.neovim linux    editor
+com.macromates.TextMate bsd    editor
+com.macromates.TextMate macos    editor
+com.macromates.TextMate linux    editor
 
 
 ## GOlang
-com.apple.automator.neovim go    editor
-com.apple.automator.neovim golang    editor
-com.apple.automator.neovim mod    editor
-com.apple.automator.neovim sum    editor
+com.macromates.TextMate go    editor
+com.macromates.TextMate golang    editor
+com.macromates.TextMate mod    editor
+com.macromates.TextMate sum    editor
 
 #RUST
-com.apple.automator.neovim rst    editor
-com.apple.automator.neovim rust   editor
-com.apple.automator.neovim s    editor
+com.macromates.TextMate rst    editor
+com.macromates.TextMate rust   editor
+com.macromates.TextMate s    editor
 
 ## Pascal
-com.apple.automator.neovim pas    editor
+com.macromates.TextMate pas    editor
 
 # MISC / other languages
-com.apple.automator.neovim lua    editor
+com.macromates.TextMate lua    editor
 
-com.apple.automator.neovim ahk    editor
-com.apple.automator.neovim ahkl    editor
+com.macromates.TextMate ahk    editor
+com.macromates.TextMate ahkl    editor
 
-com.apple.automator.neovim au3    editor
-com.apple.automator.neovim awk    editor
-com.apple.automator.neovim auk    editor
-com.apple.automator.neovim gwak    editor
-com.apple.automator.neovim mawk    editor
-com.apple.automator.neovim nawk    editor
+com.macromates.TextMate au3    editor
+com.macromates.TextMate awk    editor
+com.macromates.TextMate auk    editor
+com.macromates.TextMate gwak    editor
+com.macromates.TextMate mawk    editor
+com.macromates.TextMate nawk    editor
 
-com.apple.automator.neovim jq    editor
+com.macromates.TextMate jq    editor
 
-com.apple.automator.neovim bb     editor
+com.macromates.TextMate bb     editor
 
-com.apple.automator.neovim b    editor
-com.apple.automator.neovim bf    editor
+com.macromates.TextMate b    editor
+com.macromates.TextMate bf    editor
 
-com.apple.automator.neovim ceylon    editor
-com.apple.automator.neovim ch    editor
-com.apple.automator.neovim ck    editor
-com.apple.automator.neovim cirru    editor
-com.apple.automator.neovim clw    editor
+com.macromates.TextMate ceylon    editor
+com.macromates.TextMate ch    editor
+com.macromates.TextMate ck    editor
+com.macromates.TextMate cirru    editor
+com.macromates.TextMate clw    editor
 
-com.apple.automator.neovim sql    editor
+com.macromates.TextMate sql    editor
 
 # Docker
-com.apple.automator.neovim docker-compose editor
+com.macromates.TextMate docker-compose editor
 
 # Terraform
-com.apple.automator.neovim tf editor
-com.apple.automator.neovim tfvar editor
+com.macromates.TextMate tf editor
+com.macromates.TextMate tfvar editor
 
 # Encodings
-com.apple.automator.neovim ascii    editor
-com.apple.automator.neovim ansi    editor
-com.apple.automator.neovim asc    editor
-com.apple.automator.neovim axt    editor
-com.apple.automator.neovim utf8    editor
-com.apple.automator.neovim utx    editor
-com.apple.automator.neovim tx8    editor
+com.macromates.TextMate ascii    editor
+com.macromates.TextMate ansi    editor
+com.macromates.TextMate asc    editor
+com.macromates.TextMate axt    editor
+com.macromates.TextMate utf8    editor
+com.macromates.TextMate utx    editor
+com.macromates.TextMate tx8    editor
 
-com.apple.automator.neovim att    editor
-com.apple.automator.neovim xmp    editor
+com.macromates.TextMate att    editor
+com.macromates.TextMate xmp    editor
 
-com.apple.automator.neovim tt    editor
-com.apple.automator.neovim ver    editor
+com.macromates.TextMate tt    editor
+com.macromates.TextMate ver    editor
 
-com.apple.automator.neovim textile    editor
-com.apple.automator.neovim spec    editor
-com.apple.automator.neovim rml    editor
+com.macromates.TextMate textile    editor
+com.macromates.TextMate spec    editor
+com.macromates.TextMate rml    editor
 
 # LOCALISATIONS
-com.apple.automator.neovim us    editor
-com.apple.automator.neovim es    editor
-com.apple.automator.neovim ger    editor
-com.apple.automator.neovim de    editor
-com.apple.automator.neovim fr    editor
-com.apple.automator.neovim it    editor
-com.apple.automator.neovim sk    editor
-com.apple.automator.neovim cs    editor
+com.macromates.TextMate us    editor
+com.macromates.TextMate es    editor
+com.macromates.TextMate ger    editor
+com.macromates.TextMate de    editor
+com.macromates.TextMate fr    editor
+com.macromates.TextMate it    editor
+com.macromates.TextMate sk    editor
+com.macromates.TextMate cs    editor
 
 # HASHES
-com.apple.automator.neovim hash    editor
-com.apple.automator.neovim crc    editor
+com.macromates.TextMate hash    editor
+com.macromates.TextMate crc    editor
 
-com.apple.automator.neovim md4    editor
-com.apple.automator.neovim md5    editor
-com.apple.automator.neovim sha    editor
-com.apple.automator.neovim sha1    editor
-com.apple.automator.neovim sha2    editor
-com.apple.automator.neovim sha265    editor
-com.apple.automator.neovim sha384    editor
-com.apple.automator.neovim sha512    editor
+com.macromates.TextMate md4    editor
+com.macromates.TextMate md5    editor
+com.macromates.TextMate sha    editor
+com.macromates.TextMate sha1    editor
+com.macromates.TextMate sha2    editor
+com.macromates.TextMate sha265    editor
+com.macromates.TextMate sha384    editor
+com.macromates.TextMate sha512    editor
 
-com.apple.automator.neovim md4sum    editor
-com.apple.automator.neovim md5sum    editor
-com.apple.automator.neovim shasum    editor
-com.apple.automator.neovim sha1sum    editor
-com.apple.automator.neovim sha2sum    editor
-com.apple.automator.neovim sha265sum    editor
-com.apple.automator.neovim sha384sum    editor
-com.apple.automator.neovim sha512sum    editor
+com.macromates.TextMate md4sum    editor
+com.macromates.TextMate md5sum    editor
+com.macromates.TextMate shasum    editor
+com.macromates.TextMate sha1sum    editor
+com.macromates.TextMate sha2sum    editor
+com.macromates.TextMate sha265sum    editor
+com.macromates.TextMate sha384sum    editor
+com.macromates.TextMate sha512sum    editor
 
-com.apple.automator.neovim md4sums    editor
-com.apple.automator.neovim md5sums    editor
-com.apple.automator.neovim shasums    editor
-com.apple.automator.neovim sha1sums    editor
-com.apple.automator.neovim sha2sums    editor
-com.apple.automator.neovim sha265sums    editor
-com.apple.automator.neovim sha384sums    editor
-com.apple.automator.neovim sha512sums    editor
+com.macromates.TextMate md4sums    editor
+com.macromates.TextMate md5sums    editor
+com.macromates.TextMate shasums    editor
+com.macromates.TextMate sha1sums    editor
+com.macromates.TextMate sha2sums    editor
+com.macromates.TextMate sha265sums    editor
+com.macromates.TextMate sha384sums    editor
+com.macromates.TextMate sha512sums    editor
 
 # AppleScript
 com.apple.ScriptEditor2 applescript    editor
@@ -571,12 +571,12 @@ com.apple.Preview tif    editor
 com.apple.Preview tiff   editor
 
 # RSS / Playlists
-com.apple.automator.neovim atom    editor
-com.apple.automator.neovim m3u    editor
-com.apple.automator.neovim m3u8    editor
-com.apple.automator.neovim pls    editor
-com.apple.automator.neovim playlist    editor
-com.apple.automator.neovim cue    editor
+com.macromates.TextMate atom    editor
+com.macromates.TextMate m3u    editor
+com.macromates.TextMate m3u8    editor
+com.macromates.TextMate pls    editor
+com.macromates.TextMate playlist    editor
+com.macromates.TextMate cue    editor
 
 # PDF / Books
 com.apple.Preview pdf    editor

@@ -87,6 +87,7 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 highlight Comment cterm=italic
 
+
 " Uncomment for Advantage Keyboard syntax highlighting
 " autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
 

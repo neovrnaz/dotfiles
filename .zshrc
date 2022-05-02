@@ -70,13 +70,12 @@ ENABLE_CORRECTION="true"
 # Change default Oh My Zsh custom directory so that they may be stored in dotfiles repo
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git textmate fzf autoupdate fzf-tab you-should-use zsh-autosuggestions vi-mode fzf-brew)
+plugins=(git textmate fzf autoupdate fzf-tab you-should-use zsh-autosuggestions vi-mode fzf-zsh-plugin zsh-syntax-highlighting rga-fzf man mkcdir base16-shell)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,9 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 
-
-
 ### Custom ###
+
+VI_MODE_SET_CURSOR=true
 
 # Used for other settings you might not want to commit
 [ -f ~/.extra ] && source ~/.extra
@@ -119,34 +118,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export EDITOR=nvim
-export PATH="$HOME/bin:$PATH"
-
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
 
+export EDITOR=nvim
+export PATH="$HOME/bin:$PATH"
 export TERM="xterm-256color"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
-# Ruby
-# hint: make sure the path matches `ruby --version`
+# ruby (make sure the path matches `ruby --version`)
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
-
-# Completions
-autoload -U compinit
-zmodload zsh/complist
-compinit d ~/.ache/zsh/zcompdump-$ZSH_VERSION
-_comp_options+=(globdots)
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with lsd when completingcd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -F --tree --depth 2 --color=always --icon=always {2} | head -200'
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-
-#Ruby
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
-# Autosuggestions
+# autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
@@ -165,8 +147,22 @@ export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
 # you-should-use
 export YSU_IGNORED_ALIASES=("e" "v" "g")
 export YSU_HARDCORE=1
+# read more files in more programs
+export LESSOPEN='| lessfilter-fzf %s'
 
-# Colors
+# Completions
+autoload -U compinit
+zmodload zsh/complist
+compinit d ~/.ache/zsh/zcompdump-$ZSH_VERSION
+_comp_options+=(globdots)
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with lsd when completingcd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -F --tree --depth 2 --color=always --icon=always {2} | head -200'
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# colors
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
@@ -183,63 +179,12 @@ BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
 
-### Functions ###
-
-# Open man pages in Man Page Profile
-function man {
-    open x-man-page://$@;
-}
-
-mkcdir ()
-{
-    mkdir -p -- "$1" &&
-       cd -P -- "$1"
-}
-
-rga-fzf() {
-	RG_PREFIX="rga --files-with-matches"
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	open "$file"
-}
-
-function loading_material_theme...() {
-    export THEME=material; 
-    export ZSH_THEME=powerlevel10k/powerlevel10k;
-    source ~/themes/base16_$THEME;
-    export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
-    source $ZSH/oh-my-zsh.sh
-    clear
-}
-
-function loading_github_theme...() {
-    export THEME=github;
-    export ZSH_THEME=flazz;
-    source ~/themes/base16_$THEME;
-    export LS_COLORS="$(vivid -m 8-bit generate ayu)"
-    source $ZSH/oh-my-zsh.sh
-    clear
-}
-
-# Replace date with gdate
+# replace date with gdate
 if [[ $(uname) -eq Darwin ]]; then
     date() { gdate "$@" }
 fi
 
-# Plugin Settings
-
-
-VI_MODE_SET_CURSOR=true
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# to customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # disable sort when completing `git checkout`
@@ -250,13 +195,9 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-VI_MODE_SET_CURSOR=true
 
 fi
 
