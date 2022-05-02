@@ -72,18 +72,6 @@ BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
 
-THEME="material"
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
-
-export BAT_THEME="base16"
-
 # you-should-use
 export YSU_IGNORED_ALIASES=("e" "v" "g")
 export YSU_HARDCORE=1
@@ -285,20 +273,28 @@ export PATH="/Users/elijahgray/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+function loading_material_theme...() {
+    export THEME=material; 
+    export ZSH_THEME=powerlevel10k/powerlevel10k;
+    source ~/themes/base16_$THEME;
+    export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
+    source $ZSH/oh-my-zsh.sh
 
-# Keeps theme separate from profile
-### NOTE: Must execute zsh again because of a problem with zsh-vi-mode not working
-# wait to see if issue is resolved: https://github.com/jeffreytse/zsh-vi-mode/issues/169
-# last accessed: 5/1/2022
-alias ayu_colors="export LS_COLORS=\"$(vivid -m 8-bit generate ayu)\""
-alias snazzy_colors="export LS_COLORS=\"$(vivid -m 8-bit generate snazzy)\""
- alias loading_github_theme...="base16_github; rm ~/.base16_theme; export ZSH_THEME=flazz; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
- alias loading_material_theme...="base16_material; rm ~/.base16_theme; export ZSH_THEME=powerlevel10k/powerlevel10k; snazzy_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
- alias loading_basic_theme...="[[ -f ~/.base16_theme ]] && rm ~/.base16_theme; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+    # Re execution is required in order to make zsh-vi-mode work
+    # Please see issue: https://github.com/jeffreytse/zsh-vi-mode/issues/169
+    exec zsh -l
+}
+function loading_github_theme...() {
+    export THEME=github;
+    export ZSH_THEME=flazz;
+    source ~/themes/base16_$THEME;
+    export LS_COLORS="$(vivid -m 8-bit generate ayu)"
+    source $ZSH/oh-my-zsh.sh
+
+    # Re execution is required in order to make zsh-vi-mode work
+    # Please see issue: https://github.com/jeffreytse/zsh-vi-mode/issues/169
+    exec zsh -l
+}
+
 fi
 
