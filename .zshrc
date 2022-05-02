@@ -1,146 +1,4 @@
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
-
-### Custom ###
-
-# Used for other settings you might not want to commit
-[ -f ~/.extra ] && source ~/.extra
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-export EDITOR=nvim
-export PATH="$HOME/bin:$PATH"
-
-setopt HIST_IGNORE_SPACE
-setopt HIST_NO_FUNCTIONS
-
-export TERM="xterm-256color"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
-# Ruby
-# hint: make sure the path matches `ruby --version`
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
-
-# Completions
-autoload -U compinit
-zmodload zsh/complist
-compinit d ~/.ache/zsh/zcompdump-$ZSH_VERSION
-_comp_options+=(globdots)
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with lsd when completingcd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -F --tree --depth 2 --color=always --icon=always {2} | head -200'
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-
-# Autosuggestions
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
-export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
-export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# ignore suggestions for 50 characters or over
-export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
-
-# fzf
-export FZF_DEFAULT_COMMAND='fd --hidden' 
-export FZF_DEFAULT_OPTS='--color'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
-export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
---preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
-"
-
-# Colors
-BLACK=$(tput setaf 0)
-RED=$(tput setaf 1)
-GREEN=$(tput setaf 2)
-LIME_YELLOW=$(tput setaf 190)
-YELLOW=$(tput setaf 3)
-POWDER_BLUE=$(tput setaf 153)
-BLUE=$(tput setaf 4)
-MAGENTA=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-BRIGHT=$(tput bold)
-END=$(tput sgr0)
-BLINK=$(tput blink)
-REVERSE=$(tput smso)
-UNDERLINE=$(tput smul)
-
-# you-should-use
-export YSU_IGNORED_ALIASES=("e" "v" "g")
-export YSU_HARDCORE=1
-
-### Functions ###
-
-# Open man pages in Man Page Profile
-function man {
-    open x-man-page://$@;
-}
-
-# Homebrew
-# Delete (one or multiple) selected application(s)
-# mnemonic [B]rew [C]lean [P]ackages (e.g. uninstall)
-bcp() {
-    local uninst=$(brew leaves | fzf -m)
-
-    if [[ $uninst ]]; then
-        for prog in $(echo $uninst);
-        do; brew uninstall $prog; done;
-    fi
-}
-
-uninstall() {
-    local token
-    token=$(brew list --casks | fzf-tmux --query="$1" +m --preview 'brew info {}')
-
-    if [ "x$token" != "x" ]
-    then
-        echo "(U)ninstall or open the (h)omepae of $token"
-        read input
-        if [ $input = "u" ] || [ $input = "U" ]; then
-            brew uninstall --cask $token
-        fi
-        if [ $input = "h" ] || [ $token = "h" ]; then
-            brew home $token
-        fi
-    fi
-}
-
-install() {
-    echo Must learn to use tmux first! 
-}
-
-mkcdir ()
-{
-    mkdir -p -- "$1" &&
-       cd -P -- "$1"
-}
-
-rga-fzf() {
-	RG_PREFIX="rga --files-with-matches"
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	open "$file"
-}
-
-# Replace date with gdate
-if [[ $(uname) -eq Darwin ]]; then
-    date() { gdate "$@" }
-fi
-
 ### Oh My Zsh ###
 
 # If you come from bash you might have to change your $PATH.
@@ -218,8 +76,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-custom_plugins=(autoupdate fzf-tab you-should-use zsh-autosuggestions zsh-vi-mode)
-plugins=(git fzf $custom_plugins)
+plugins=(git textmate fzf autoupdate fzf-tab you-should-use zsh-autosuggestions vi-mode fzf-brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -248,10 +105,139 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
 
-# Clone the repositories of plugins that don't exit
-# [[ ! -d $ZSH_CUSTOM/plugins/ ]] 
+
+### Custom ###
+
+# Used for other settings you might not want to commit
+[ -f ~/.extra ] && source ~/.extra
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export EDITOR=nvim
+export PATH="$HOME/bin:$PATH"
+
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_FUNCTIONS
+
+export TERM="xterm-256color"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
+# Ruby
+# hint: make sure the path matches `ruby --version`
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
+
+# Completions
+autoload -U compinit
+zmodload zsh/complist
+compinit d ~/.ache/zsh/zcompdump-$ZSH_VERSION
+_comp_options+=(globdots)
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with lsd when completingcd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -F --tree --depth 2 --color=always --icon=always {2} | head -200'
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+
+#Ruby
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
+# Autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# ignore suggestions for 50 characters or over
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
+# fzf
+export FZF_DEFAULT_COMMAND='fd --hidden' 
+export FZF_DEFAULT_OPTS='--color'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
+--preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
+"
+# you-should-use
+export YSU_IGNORED_ALIASES=("e" "v" "g")
+export YSU_HARDCORE=1
+
+# Colors
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+LIME_YELLOW=$(tput setaf 190)
+YELLOW=$(tput setaf 3)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+END=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+### Functions ###
+
+# Open man pages in Man Page Profile
+function man {
+    open x-man-page://$@;
+}
+
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+       cd -P -- "$1"
+}
+
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	open "$file"
+}
+
+function loading_material_theme...() {
+    export THEME=material; 
+    export ZSH_THEME=powerlevel10k/powerlevel10k;
+    source ~/themes/base16_$THEME;
+    export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
+    source $ZSH/oh-my-zsh.sh
+    clear
+}
+
+function loading_github_theme...() {
+    export THEME=github;
+    export ZSH_THEME=flazz;
+    source ~/themes/base16_$THEME;
+    export LS_COLORS="$(vivid -m 8-bit generate ayu)"
+    source $ZSH/oh-my-zsh.sh
+    clear
+}
+
+# Replace date with gdate
+if [[ $(uname) -eq Darwin ]]; then
+    date() { gdate "$@" }
+fi
+
+# Plugin Settings
+
+
+VI_MODE_SET_CURSOR=true
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
@@ -269,32 +255,8 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH="/Users/elijahgray/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
 
-zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
-
-function loading_material_theme...() {
-    export THEME=material; 
-    export ZSH_THEME=powerlevel10k/powerlevel10k;
-    source ~/themes/base16_$THEME;
-    export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
-    source $ZSH/oh-my-zsh.sh
-
-    # Re execution is required in order to make zsh-vi-mode work
-    # Please see issue: https://github.com/jeffreytse/zsh-vi-mode/issues/169
-    exec zsh -l
-}
-function loading_github_theme...() {
-    export THEME=github;
-    export ZSH_THEME=flazz;
-    source ~/themes/base16_$THEME;
-    export LS_COLORS="$(vivid -m 8-bit generate ayu)"
-    source $ZSH/oh-my-zsh.sh
-
-    # Re execution is required in order to make zsh-vi-mode work
-    # Please see issue: https://github.com/jeffreytse/zsh-vi-mode/issues/169
-    exec zsh -l
-}
+VI_MODE_SET_CURSOR=true
 
 fi
 
