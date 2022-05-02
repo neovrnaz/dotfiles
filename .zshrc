@@ -28,7 +28,7 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
 # Completions
 autoload -U compinit
 zmodload zsh/complist
-compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+compinit -d ~/.ache/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -80,7 +80,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
+# export LS_COLORS="$(vivid -m 8-bit generate snazzy)"
 
 export BAT_THEME="base16"
 
@@ -165,7 +165,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -285,4 +285,19 @@ export PATH="/Users/elijahgray/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && enable-fzf-tab')
 
-fi
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# Keeps the theme separate from profile
+### NOTE: Must execute zsh again because of a problem with zsh-vi-mode not working
+# wait to see if issue is resolved: https://github.com/jeffreytse/zsh-vi-mode/issues/169
+# last accessed: 5/1/2022
+alias ayu_colors="export LS_COLORS=\"$(vivid -m 8-bit generate ayu)\""
+alias snazzy_colors="export LS_COLORS=\"$(vivid -m 8-bit generate snazzy)\""
+alias loading_github_theme...="base16_github; rm ~/.base16_theme; export ZSH_THEME=flazz; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+alias loading_material_theme...="base16_material; rm ~/.base16_theme; export ZSH_THEME=powerlevel10k/powerlevel10k; snazzy_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+alias loading_basic_theme...="[[ -f ~/.base16_theme ]] && rm ~/.base16_theme; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+
