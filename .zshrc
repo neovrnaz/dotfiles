@@ -28,7 +28,7 @@ export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
 # Completions
 autoload -U compinit
 zmodload zsh/complist
-compinit -d ~/.ache/zsh/zcompdump-$ZSH_VERSION
+compinit d ~/.ache/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -291,13 +291,14 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-# Keeps the theme separate from profile
+# Keeps theme separate from profile
 ### NOTE: Must execute zsh again because of a problem with zsh-vi-mode not working
 # wait to see if issue is resolved: https://github.com/jeffreytse/zsh-vi-mode/issues/169
 # last accessed: 5/1/2022
 alias ayu_colors="export LS_COLORS=\"$(vivid -m 8-bit generate ayu)\""
 alias snazzy_colors="export LS_COLORS=\"$(vivid -m 8-bit generate snazzy)\""
-alias loading_github_theme...="base16_github; rm ~/.base16_theme; export ZSH_THEME=flazz; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
-alias loading_material_theme...="base16_material; rm ~/.base16_theme; export ZSH_THEME=powerlevel10k/powerlevel10k; snazzy_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
-alias loading_basic_theme...="[[ -f ~/.base16_theme ]] && rm ~/.base16_theme; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+ alias loading_github_theme...="base16_github; rm ~/.base16_theme; export ZSH_THEME=flazz; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+ alias loading_material_theme...="base16_material; rm ~/.base16_theme; export ZSH_THEME=powerlevel10k/powerlevel10k; snazzy_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+ alias loading_basic_theme...="[[ -f ~/.base16_theme ]] && rm ~/.base16_theme; ayu_colors; source $ZSH/oh-my-zsh.sh; clear; exec zsh -l"
+fi
 
