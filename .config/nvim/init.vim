@@ -17,7 +17,6 @@ nnoremap <leader><CR>     :Buffers<CR>
 nnoremap <leader>fl       :Lines<CR>
 nnoremap <leader>rg       :Rg <C-R><C-W><CR>
 nnoremap <leader>m        :FZFMru<CR>
-nnoremap <F9> :!%:p<Enter>
 
 nnoremap zz :update<cr>
 
@@ -26,7 +25,7 @@ noremap <Down>  <NOP>
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 
- " This unsets the "last search pattern" register by hitting escape
+" This unsets the "last search pattern" register by hitting escape
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <CR> :noh<CR>
 
@@ -43,50 +42,41 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'sheerun/vim-polyglot'
-Plug 'junegunn/fzf'
-Plug 'tpope/vim-eunuch'
-Plug 'ryanoasis/vim-devicons'
-Plug 'mhinz/vim-startify'
-Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-commentary'
+Plug 'ArjenL/vim-kinesis'
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mattn/emmet-vim'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
-Plug 'yegappan/mru'
-Plug 'ArjenL/vim-kinesis'
 Plug 'jiangmiao/auto-pairs'
-Plug 'pangloss/vim-javascript'
-Plug 'godlygeek/tabular'
-Plug 'turbio/bracey.vim'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
-Plug 'preservim/vim-markdown'
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-startify'
 Plug 'mtth/scratch.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'turbio/bracey.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 source $HOME/.config/nvim/coc.vim
 
 let g:AutoPairsShortcutToggle = ''
 
-"""" Appearance
+"""" Appearance (not including base16-shell)
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 syntax on
 syntax enable
-" Oceanic Theme
-let g:airline_theme='base16_material'
-" base16-shell
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
 highlight Comment cterm=italic
-
 
 " Uncomment for Advantage Keyboard syntax highlighting
 " autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
