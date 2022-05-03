@@ -42,10 +42,10 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'ArjenL/vim-kinesis'
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-startify'
@@ -78,7 +78,4 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 highlight Comment cterm=italic
-
-" Uncomment for Advantage Keyboard syntax highlighting
-" autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
 
