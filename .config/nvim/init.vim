@@ -72,6 +72,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 syntax on
 syntax enable
+  let g:airline_theme=$BASE16_THEME
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
