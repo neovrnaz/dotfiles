@@ -75,7 +75,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git textmate fzf autoupdate fzf-tab you-should-use zsh-autosuggestions vi-mode fzf-zsh-plugin zsh-syntax-highlighting rga-fzf man mkcdir base16-shell)
+plugins=(git textmate fzf autoupdate fzf-tab you-should-use zsh-autosuggestions vi-mode fzf-zsh-plugin zsh-syntax-highlighting rga-fzf man base16-shell)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -170,13 +170,13 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
-LIME_YELLOW=$(tput setaf 190)
 YELLOW=$(tput setaf 3)
-POWDER_BLUE=$(tput setaf 153)
 BLUE=$(tput setaf 4)
 MAGENTA=$(tput setaf 5)
 CYAN=$(tput setaf 6)
 WHITE=$(tput setaf 7)
+LIME_YELLOW=$(tput setaf 190)
+POWDER_BLUE=$(tput setaf 153)
 BRIGHT=$(tput bold)
 END=$(tput sgr0)
 BLINK=$(tput blink)
