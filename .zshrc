@@ -76,7 +76,20 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git textmate fzf autoupdate fzf-tab you-should-use zsh-autosuggestions vi-mode fzf-zsh-plugin zsh-syntax-highlighting rga-fzf man base16-shell)
+plugins=(git
+    textmate
+    fzf
+    autoupdate
+    fzf-tab
+    you-should-use
+    zsh-autosuggestions
+    vi-mode
+    zsh-syntax-highlighting
+    rga-fzf
+    man
+    base16-shell
+    config
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,21 +135,15 @@ fi
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
 
-export EDITOR=nvim
-export PATH="$HOME/bin:$PATH"
-export TERM="xterm-256color"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
 # ruby (make sure the path matches `ruby --version`)
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.3/bin:$PATH"
 # autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='chflags hidden *'
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # ignore suggestions for 50 characters or over
-export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
-# fzf
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)" fzf
 export FZF_DEFAULT_COMMAND='fd --hidden' 
 export FZF_DEFAULT_OPTS='--color'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
