@@ -1,5 +1,6 @@
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
-### Oh My Zsh ###
+
+    ### Oh My Zsh ###
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -125,13 +126,6 @@ VI_MODE_SET_CURSOR=true
 # Used for other settings you might not want to commit
 [ -f ~/.extra ] && source ~/.extra
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
 
@@ -207,5 +201,11 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 zstyle ':fzf-tab:*' switch-group ',' '.'
 enable-fzf-tab
 
+if [[ $BASE16_THEME == "base16_material" ]]; then
+    base16_material
+
+elif [[ $BASE16_THEME == "base16_github" ]]; then
+    base16_github
 fi
 
+fi
