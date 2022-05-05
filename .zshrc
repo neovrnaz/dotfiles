@@ -191,11 +191,6 @@ BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
 
-# replace date with gdate
-if [[ $(uname) -eq Darwin ]]; then
-    date() { gdate "$@" }
-fi
-
 # to customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 

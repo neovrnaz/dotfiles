@@ -81,7 +81,8 @@ source $HOME/.config/nvim/coc.vim
 """" Styles
 syntax on
 syntax enable
-  let g:airline_theme=$BASE16_THEME
+let g:airline_theme=$BASE16_THEME
+set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background

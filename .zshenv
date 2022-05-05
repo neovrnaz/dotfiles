@@ -1,3 +1,5 @@
+# Enviornment variables that need to be available for other programs, and should be invoked for all zsh shells
+
 # Editor
 # sets editor for programs (including git)
 export VISUAL=nvim
