@@ -112,7 +112,7 @@ defaults write com.apple.dock show-process-indicators -bool false
 defaults write com.apple.dock persistent-apps -array
 
 # Show only open applications in the Dock
-# defaults write com.apple.dock static-only -bool true
+defaults write com.apple.dock static-only -bool true
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
@@ -311,6 +311,16 @@ dockutil --add /Applications/Terminal --after 'Finder'
 dockutil --add /Applications/Anki --after 'Finder'
 dockutil --add /Applications/Safari --after 'Finder'
 
+defaults write com.apple.TimeMachine AutoBackup =1
+
+# Disables auto capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+# Disables "smart" dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+# Disables automatic period substitutions
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+# Disable correct spelling automatically (doesn't work in notes)
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Kill affected applications                                                  #

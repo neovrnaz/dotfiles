@@ -1,6 +1,6 @@
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 
-    ### Oh My Zsh ###
+### Oh My Zsh ###
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -8,43 +8,12 @@ if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# # Disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 7
 zstyle ':omz:update' mode reminder
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -53,43 +22,30 @@ ENABLE_CORRECTION="true"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# Change default Oh My Zsh custom directory so that they may be stored in dotfiles repo
-ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
+#
+# Don't sort because order matters
+plugins=(
+    autoupdate
+    git
     textmate
     fzf
-    autoupdate
     fzf-tab
     you-should-use
     zsh-autosuggestions
     vi-mode
     zsh-syntax-highlighting
     rga-fzf
-    man
-    base16-shell
+    xmanpage
+    apply-theme
     config
+    help
+    enable-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -111,17 +67,10 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="mate ~/.zshrc"
-
-### Custom ###
-
 VI_MODE_SET_CURSOR=true
+
+# Update custom zsh plugins automatically
+export UPDATE_ZSH_DAYS=7
 
 # Used for other settings you might not want to commit
 [ -f ~/.extra ] && source ~/.extra
@@ -129,7 +78,6 @@ VI_MODE_SET_CURSOR=true
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_FUNCTIONS
 
-export GSD_SITES="nxmac.com ebay.com facebook.com amazon.com"
 # ruby (make sure the path matches `ruby --version`)
 # autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=238'
@@ -138,35 +86,23 @@ export ZSH_AUTOSUGGEST_HISTORY_IGNORE='git add *'
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # ignore suggestions for 50 characters or over
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)" fzf
-export FZF_DEFAULT_COMMAND='fd --hidden' 
-export FZF_DEFAULT_OPTS='--color'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
-export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE
---preview 'lsd -F --tree --depth 2 --color=always --icon=always {} | head -200'
-"
+
+# ruby (make sure the path matches `ruby --version`)
+# autosuggestions
+# ignore suggestions for 50 characters or over
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)" fzf
+export FZF_DEFAULT_COMMAND='fd . --hidden ' 
+# export FZF_DEFAULT_OPTS=''
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}' "
+export FZF_CTRL_R_OPTS="--color "
+export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS_BASE --preview 'exa --tree --level 2 --color=always --icons {} | head -200'"
+
 # you-should-use
 export YSU_IGNORED_ALIASES=("e" "v" "g")
 export YSU_HARDCORE=1
+
 # read more files in more programs
 export LESSOPEN='| lessfilter-fzf %s'
-
-# Completions
-autoload -U compinit
-zmodload zsh/complist
-compinit d ~/.ache/zsh/zcompdump-$ZSH_VERSION
-_comp_options+=(globdots)
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with ls when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # colors
 BLACK=$(tput setaf 0)
@@ -188,24 +124,11 @@ UNDERLINE=$(tput smul)
 # to customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls'
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 
+
+[[ -v THEME ]] && apply_theme_$THEME
+
 enable-fzf-tab
-
-if [[ $BASE16_THEME == "base16_material" ]]; then
-    base16_material
-
-elif [[ $BASE16_THEME == "base16_github" ]]; then
-    base16_github
-fi
+enable-completions
 
 fi

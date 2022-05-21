@@ -9,8 +9,7 @@ set mouse=n
 
 """ Varibles
 let mapleader = " "
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 """ Keybindings
 
@@ -22,10 +21,11 @@ nnoremap <leader><CR>     :Buffers<CR>
 nnoremap <leader>fl       :Lines<CR>
 nnoremap <leader>rg       :Rg <C-R><C-W><CR>
 nnoremap <leader>m        :FZFMru<CR>
+nnoremap <leader>h        :History<CR>
 
 nnoremap zz :update<cr>
 
-" Disable arrow keys
+" Disable arrow keys in normal mode
 noremap <up>    <NOP>
 noremap <Down>  <NOP>
 noremap <Left>  <NOP>
@@ -74,18 +74,48 @@ Plug 'tpope/vim-unimpaired'
 Plug 'turbio/bracey.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 source $HOME/.config/nvim/coc.vim
 
-"""" Styles
-syntax on
-syntax enable
-let g:airline_theme=$BASE16_THEME
-set background=dark
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+set notermguicolors
+if !empty($BASE16_THEME)
+    """" Styles
+    syntax on
+    syntax enable
+    if $BASE16_THEME == 'base16_material'
+        set background=dark
+        let g:airline_theme='base16_material'
+      elseif $BASE16_THEME == 'base16_github'
+          " base16_github looks odd so using regular base16
+        let g:airline_theme='base16'
+    endif
+    if filereadable(expand("~/.vimrc_background"))
+        let base16colorspace=256
+        source ~/.vimrc_background
+    endif
+    highlight Comment cterm=italic
+    let g:airline_powerline_fonts = 1
 endif
-highlight Comment cterm=italic
+
+" https://stackoverflow.com/questions/64175618/colors-in-fzf-vim
+  " Customize fzf colors to match your color scheme                                          
+  " - fzf#wrap translates this to a set of `--color` options                                 
+  let g:fzf_colors =                                                                         
+  \ { 'fg':      ['fg', 'Normal'],                                                           
+    \ 'bg':      ['bg', 'Normal'],                                                           
+    \ 'hl':      ['fg', 'Comment'],                                                          
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],                             
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],                                       
+    \ 'hl+':     ['fg', 'Statement'],                                                        
+    \ 'info':    ['fg', 'PreProc'],                                                          
+    \ 'border':  ['fg', 'Ignore'],                                                           
+    \ 'prompt':  ['fg', 'Conditional'],                                                      
+    \ 'pointer': ['fg', 'Exception'],                                                        
+    \ 'marker':  ['fg', 'Keyword'],                                                          
+    \ 'spinner': ['fg', 'Label'],                                                            
+    \ 'header':  ['fg', 'Comment'] } 
+
+autocmd BufNewFile,BufRead ?_{qwerty,dvorak}.txt,{qwerty,dvorak}.txt set filetype=advantage2
 

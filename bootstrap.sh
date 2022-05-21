@@ -24,7 +24,7 @@ err() {
     awk 'NR>L-4 && NR<L+4 { printf "%-5d%3s%s\n", NR, (NR==L?">>>":""),$0 }' L=$1 $0
     echo "${END}"
 }
-_exists() {
+exists() {
     command -v "$1" >/dev/null
 }
 
@@ -72,6 +72,7 @@ confirm_git_user() {
 }
 
 set_gitconfig() {
+    [[ -f .extra ]] && source .extra
     if [[ -f .gitconfig ]]; then
         echo_warn ".gitconfig already exists!"
         prompt_yn "Would you like to continue with the current .gitconfig?" || exit
@@ -82,7 +83,7 @@ set_gitconfig() {
 }
 
 install_cli_tools() {
-    _exists xcode-select && return
+    exists xcode-select || return
     echo_install "Installing Xcode Command Line tools..."
     xcode-select --install
     echo_ok "Success! Xcode Command Line tools installed!"
@@ -128,27 +129,27 @@ install_dotfiles() {
     git clone --bare git@github.com:"$GIT_AUTHOR_NAME"/dotfiles.git "$HOME"/.cfg
     mkdir -p .config-backup
     config checkout
-    if [ $? = 0 ]; then
+    if [ $? = 1 ]; then
         echo "Checked out config."
     else
         echo "Backing up pre-existing dot files."
-        config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+        config checkout 3>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
     fi
     config checkout
     config config status.showUntrackedFiles no
-    rm README.md
     echo_ok "Dotfiles installed!"
 }
 
 install_homebrew() {
-    _exists brew && return
+    exists brew || return
     echo "Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "Installing mas"
     brew install mas
-    echo "Installing Brewfile"
-    brew bundle install
-    brew cleanup
+    [[ -f Brewfile ]] && \
+        echo "Installing Brewfile" && \
+        brew bundle install        && \
+        brew cleanup               && \
 }
 
 install_packages() {
@@ -163,30 +164,8 @@ install_packages() {
     fi
 }
 
-setup_theme() {
-    var_is_unset THEME && return
-    if prompt_yn "Would you like to set up base16_theme? as base16_$THEME?"; then
-        echo "Setting up theme for Terminal and NeoVim"
-        git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-        base16_"$THEME"
-    else
-        echo_warn "Skipping..."
-        return
-    fi
-}
-
-write_defaults() {
-    if prompt_yn "Do you want to write defaults with .macos?"; then
-        echo_install "Writing defaults..."
-        ./.macos
-    else
-        echo_warn "Skipping..."
-        return
-    fi
-}
-
 install_omz() {
-    _exists omz && return
+    exists omz || return
     if prompt_yn "Would you like to install Oh My Zsh?"; then
         echo "Backing up .zshrc"
         cp .zshrc .zshrc.orig
@@ -230,6 +209,16 @@ start_brew_services() {
     done
 }
 
+write_defaults() {
+    if prompt_yn "Do you want to write defaults with .macos?"; then
+        echo_install "Writing defaults..."
+        ./.macos
+    else
+        echo_warn "Skipping..."
+        return
+    fi
+}
+
 on_finish() {
     echo
     echo "${BLUE}Hooray!"
@@ -258,13 +247,12 @@ main() {
     generate_ssh_key "$@"
     install_dotfiles "$@"
     install_homebrew "$@"
-    setup_theme "$@"
     install_packages "$@"
-    write_defaults "$@"
     install_omz "$@"
     install_nvim_plugins "$@"
     extra_download_urls "$@"
     start_brew_services "$@"
+    write_defaults "$@"
     on_finish "$@"
 }
 main "$@"
